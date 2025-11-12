@@ -1,33 +1,54 @@
 import os
 import json
+import shutil
 from pathlib import Path
 
-def get_artwork_files():
-    """Get all artwork files from the specified directories"""
+# Configuration
+WEBSITE_DIR = Path(__file__).parent
+ARTWORK_DIR = WEBSITE_DIR / 'artwork'
+
+def copy_artwork_to_website():
+    """Copy artwork from source to website directory"""
     art_folders = {
         'paintings': r"C:\Shatarupa\Art\Paintings",
         'videos': r"C:\Shatarupa\Art\Short Painting Videos",
         'sold': r"C:\Shatarupa\Art\Sold Out"
     }
     
-    artwork_data = {}
+    # Create artwork directory if it doesn't exist
+    ARTWORK_DIR.mkdir(exist_ok=True)
     
-    for category, folder_path in art_folders.items():
-        artwork_data[category] = []
-        folder = Path(folder_path)
-        
-        if not folder.exists():
-            print(f"Warning: Directory not found - {folder_path}")
+    # Clear existing artwork to avoid duplicates
+    for item in ARTWORK_DIR.glob('*'):
+        if item.is_file():
+            item.unlink()
+    
+    # Copy files
+    for category, src_folder in art_folders.items():
+        src_path = Path(src_folder)
+        if not src_path.exists():
+            print(f"Warning: Source directory not found - {src_folder}")
             continue
             
-        for file in folder.iterdir():
-            if file.suffix.lower() in {'.jpg', '.jpeg', '.png', '.gif', '.webp', '.mp4', '.webm', '.mov'}:
-                is_video = file.suffix.lower() in {'.mp4', '.webm', '.mov'}
+        for ext in ('*.jpg', '*.jpeg', '*.png', '*.mp4', '*.webm'):
+            for src_file in src_path.glob(ext):
+                dest_file = ARTWORK_DIR / f"{category}_{src_file.name}"
+                shutil.copy2(src_file, dest_file)
+
+def get_artwork_files():
+    """Get all artwork files from the website's artwork directory"""
+    artwork_data = {}
+    categories = ['paintings', 'videos', 'sold']
+    
+    for category in categories:
+        artwork_data[category] = []
+        for ext in ('.jpg', '.jpeg', '.png', '.mp4', '.webm'):
+            for file_path in ARTWORK_DIR.glob(f"{category}_*{ext}"):
+                is_video = file_path.suffix.lower() in ['.mp4', '.webm']
                 artwork_data[category].append({
-                    'filename': file.name,
-                    'path': str(file).replace('\\', '/'),
-                    'is_video': is_video,
-                    'category': category
+                    'path': f"artwork/{file_path.name}",
+                    'filename': file_path.name.replace(f"{category}_", "", 1),
+                    'is_video': is_video
                 })
     
     return artwork_data
@@ -62,14 +83,14 @@ def generate_gallery_html(artwork_data):
                     <div class="gallery-image">
                         <div class="video-container">
                             <video class="art-video" controls>
-                                <source src="{item['path'].replace('\\', '/')}" type="video/mp4">
+                                <source src="{item['path']}" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
                         </div>
                         <div class="gallery-overlay">
                             <h3>{item_name}</h3>
                             <p>Video</p>
-                            <a href="#" class="btn-details view-fullscreen" data-src="{item['path'].replace('\\', '/')}" data-type="video">View Fullscreen</a>
+                            <a href="#" class="btn-details view-fullscreen" data-src="{item['path']}" data-type="video">View Fullscreen</a>
                         </div>
                     </div>
                 </div>
@@ -78,11 +99,11 @@ def generate_gallery_html(artwork_data):
                 html += f'''
                 <div class="gallery-item" data-category="{category}">
                     <div class="gallery-image">
-                        <img src="{item['path'].replace('\\', '/')}" alt="{item_name}">
+                        <img src="{item['path']}" alt="{item_name}">
                         <div class="gallery-overlay">
                             <h3>{item_name}</h3>
                             <p>Painting</p>
-                            <a href="#" class="btn-details view-fullscreen" data-src="{item['path'].replace('\\', '/')}" data-type="image">View Fullscreen</a>
+                            <a href="#" class="btn-details view-fullscreen" data-src="{item['path']}" data-type="image">View Fullscreen</a>
                         </div>
                     </div>
                 </div>
@@ -183,53 +204,49 @@ def generate_gallery_html(artwork_data):
     return html
 
 def update_website():
-    # Get the artwork data
+    """Update the website with the latest gallery content"""
+    # First, copy all artwork to the website directory
+    print("Copying artwork files...")
+    copy_artwork_to_website()
+    
+    # Get artwork data
+    print("Scanning artwork...")
     artwork_data = get_artwork_files()
     
-    # Read the current index.html
-    with open('index.html', 'r', encoding='utf-8') as file:
-        content = file.read()
-    
-    # Generate the new gallery HTML
+    # Generate gallery HTML
+    print("Generating gallery HTML...")
     gallery_html = generate_gallery_html(artwork_data)
     
-    # Find and replace the gallery section
-    start_marker = '<!-- Gallery Section -->'
-    end_marker = '<!-- /Gallery Section -->'
+    # Read the current index.html
+    with open('index.html', 'r', encoding='utf-8') as f:
+        content = f.read()
     
-    if start_marker in content and end_marker in content:
-        # If markers exist, replace the content between them
-        start = content.find(start_marker)
-        end = content.find(end_marker) + len(end_marker)
-        new_content = content[:start] + gallery_html + '<!-- /Gallery Section -->' + content[end:]
-    else:
-        # If markers don't exist, find the gallery section by ID
-        start = content.find('<section id="gallery"')
-        if start == -1:
-            print("Error: Could not find gallery section in index.html")
-            return
-            
-        # Find the end of the gallery section
-        section_depth = 1
-        end = start + 1
-        while end < len(content) and section_depth > 0:
-            if content[end] == '<':
-                if content.startswith('</section>', end):
-                    section_depth -= 1
-                    if section_depth == 0:
-                        end += len('</section>')
-                        break
-                elif content.startswith('<section', end):
-                    section_depth += 1
-            end += 1
-            
-        new_content = content[:start] + gallery_html + content[end:]
+    # Find and replace the gallery section
+    start_marker = '<!-- GALLERY_SECTION_START -->'
+    end_marker = '<!-- GALLERY_SECTION_END -->'
+    
+    start_idx = content.find(start_marker)
+    end_idx = content.find(end_marker)
+    
+    if start_idx == -1 or end_idx == -1:
+        print("Error: Could not find gallery section markers in index.html")
+        return
+    
+    # Update the content
+    new_content = (
+        content[:start_idx + len(start_marker)] + 
+        '\n' + gallery_html + '\n' +
+        content[end_idx:]
+    )
     
     # Write the updated content back to index.html
-    with open('index.html', 'w', encoding='utf-8') as file:
-        file.write(new_content)
+    with open('index.html', 'w', encoding='utf-8') as f:
+        f.write(new_content)
     
     print("Gallery updated successfully!")
+    print("\nNext steps:")
+    print("1. Commit and push your changes to GitHub")
+    print("2. Your changes will be live at: https://shatarupabhattacharjee.github.io")
 
 if __name__ == "__main__":
     update_website()
