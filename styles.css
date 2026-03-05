@@ -157,6 +157,7 @@ body {
     align-items: center;
     position: relative;
     overflow: hidden;
+    /* Trigger fresh deployment */
 }
 
 .hero-content {
