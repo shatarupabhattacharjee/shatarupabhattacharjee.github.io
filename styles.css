@@ -186,7 +186,7 @@ body {
 .banner-carousel {
     position: relative;
     width: 100%;
-    max-width: 500px;
+    max-width: 600px;
     height: auto;
     overflow: hidden;
     border-radius: 20px;
@@ -213,8 +213,9 @@ body {
     border-radius: 20px;
     object-fit: contain;
     background: white;
-    padding: 5px;
+    padding: 3px;
     border: 2px solid rgba(45, 27, 20, 0.1);
+    min-height: 350px;
 }
 
 .carousel-controls {
@@ -1591,7 +1592,7 @@ body {
     }
     
     .banner-carousel {
-        max-width: 320px;
+        max-width: 350px;
     }
     
     .carousel-btn {
@@ -1612,6 +1613,10 @@ body {
     .carousel-indicators {
         bottom: 10px;
         gap: 6px;
+    }
+    
+    .carousel-slide .banner-img {
+        min-height: 250px;
     }
     
     .floating-elements {
