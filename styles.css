@@ -188,21 +188,32 @@ body {
     width: 100%;
     max-width: 500px;
     height: auto;
+    min-height: 300px;
     overflow: hidden;
     border-radius: 20px;
     box-shadow: 0 20px 60px rgba(45, 27, 20, 0.15);
 }
 
 .carousel-slide {
-    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
+    pointer-events: none;
+}
+
+.carousel-slide:first-child {
+    position: relative;
+    opacity: 1;
+    pointer-events: all;
 }
 
 .carousel-slide.active {
-    display: block;
+    position: relative;
     opacity: 1;
+    pointer-events: all;
 }
 
 .carousel-slide .banner-img {
