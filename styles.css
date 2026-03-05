@@ -157,7 +157,8 @@ body {
     align-items: center;
     position: relative;
     overflow: hidden;
-    /* Trigger fresh deployment */
+    border: 5px solid var(--primary-coral);
+    /* Force CSS update - visible indicator */
 }
 
 .hero-content {
