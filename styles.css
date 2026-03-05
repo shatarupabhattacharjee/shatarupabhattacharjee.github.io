@@ -157,16 +157,14 @@ body {
     align-items: center;
     position: relative;
     overflow: hidden;
-    border: 5px solid var(--primary-coral);
-    /* Force CSS update - visible indicator */
 }
 
 .hero-content {
     max-width: none;
     margin: 0 auto;
     padding: 0 20px;
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
+    display: flex;
+    flex-direction: column;
     gap: 2rem;
     align-items: center;
     min-height: 100vh;
@@ -174,9 +172,9 @@ body {
 }
 
 .hero-text {
-    text-align: left;
-    max-width: 600px;
-    justify-self: start;
+    text-align: center;
+    max-width: 800px;
+    order: 2;
 }
 
 .hero-image {
@@ -186,37 +184,19 @@ body {
     align-items: center;
     visibility: visible;
     opacity: 1;
-    justify-self: end;
+    order: 1;
     width: 100%;
 }
 
 .banner-carousel {
     position: relative;
-    width: 100%;
-    max-width: 600px;
+    width: 90vw;
+    max-width: 90vw;
     height: auto;
     overflow: visible;
     border-radius: 20px;
     box-shadow: 0 20px 60px rgba(45, 27, 20, 0.15);
     margin: 0 auto;
-}
-
-/* Decorative dots overlay */
-.banner-carousel::before {
-    content: '';
-    position: absolute;
-    top: 20%;
-    right: 10%;
-    width: 200px;
-    height: 200px;
-    background-image: radial-gradient(circle, var(--primary-coral) 2px, transparent 2px),
-                      radial-gradient(circle, var(--primary-teal) 2px, transparent 2px),
-                      radial-gradient(circle, var(--primary-gold) 2px, transparent 2px);
-    background-size: 30px 30px, 25px 25px, 35px 35px;
-    background-position: 0 0, 15px 15px, 10px 5px;
-    opacity: 0.6;
-    pointer-events: none;
-    z-index: 10;
 }
 
 .carousel-slide {
@@ -243,8 +223,7 @@ body {
     background: white;
     padding: 0;
     border: none;
-    min-height: 500px;
-    max-height: 80vh;
+    max-height: 70vh;
 }
 
 .carousel-controls {
@@ -293,25 +272,21 @@ body {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.6);
     cursor: pointer;
     transition: all 0.3s ease;
-    border: 3px solid var(--primary-coral);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(45, 27, 20, 0.3);
 }
 
 .indicator.active {
     background: var(--primary-coral);
     transform: scale(1.3);
-    border-color: var(--warm-orange);
-    box-shadow: 0 4px 12px rgba(232, 90, 79, 0.4);
+    border-color: var(--primary-coral);
 }
 
 .indicator:hover {
-    background: var(--primary-teal);
-    border-color: var(--primary-teal);
+    background: rgba(255, 255, 255, 0.9);
     transform: scale(1.2);
-    box-shadow: 0 4px 12px rgba(0, 150, 136, 0.4);
 }
 
 .banner-img:hover {
@@ -331,38 +306,35 @@ body {
 .paint-splash {
     position: absolute;
     border-radius: 50%;
-    opacity: 0.3;
+    opacity: 0.1;
     animation: float 6s ease-in-out infinite;
 }
 
 .splash-1 {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     background: var(--primary-coral);
     top: 10%;
     left: 10%;
     animation-delay: 0s;
-    box-shadow: 0 0 20px rgba(232, 90, 79, 0.4);
 }
 
 .splash-2 {
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     background: var(--primary-teal);
     top: 70%;
     right: 10%;
     animation-delay: 2s;
-    box-shadow: 0 0 20px rgba(0, 150, 136, 0.4);
 }
 
 .splash-3 {
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
     background: var(--primary-gold);
     bottom: 20%;
     left: 5%;
     animation-delay: 4s;
-    box-shadow: 0 0 20px rgba(255, 193, 7, 0.4);
 }
 
 @keyframes float {
@@ -1602,23 +1574,20 @@ body {
     }
     
     .hero-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+        flex-direction: column;
+        gap: 1.5rem;
         text-align: center;
         min-height: auto;
         padding: 2rem 1rem;
     }
     
     .hero-text {
-        text-align: center;
+        order: 2;
         max-width: 100%;
-        justify-self: center;
-        order: 1;
     }
     
     .hero-image {
-        justify-self: center;
-        order: 2;
+        order: 1;
         width: 100%;
     }
     
@@ -1671,21 +1640,6 @@ body {
     .indicator {
         width: 24px;
         height: 24px;
-        background: rgba(255, 255, 255, 0.9);
-        border: 3px solid var(--primary-coral);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    }
-    
-    .indicator.active {
-        background: var(--primary-coral);
-        border-color: var(--warm-orange);
-        box-shadow: 0 4px 12px rgba(232, 90, 79, 0.4);
-    }
-    
-    .indicator:hover {
-        background: var(--primary-teal);
-        border-color: var(--primary-teal);
-        box-shadow: 0 4px 12px rgba(0, 150, 136, 0.4);
     }
     
     .carousel-indicators {

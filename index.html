@@ -3,168 +3,1258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shatarupa's Artree - NEW LAYOUT</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f8f5f2;
-        }
-        .hero {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 2rem;
-            align-items: center;
-            padding: 2rem;
-            min-height: 100vh;
-            border: 5px solid #e85a4f;
-        }
-        .hero-text {
-            text-align: left;
-        }
-        .hero-image {
-            text-align: center;
-        }
-        .banner-carousel {
-            position: relative;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .banner-img {
-            width: 100%;
-            height: auto;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(45, 27, 20, 0.15);
-        }
-        .carousel-slide {
-            display: none;
-        }
-        .carousel-slide.active {
-            display: block;
-        }
-        .carousel-controls {
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 10px;
-        }
-        .carousel-btn {
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-size: 18px;
-            cursor: pointer;
-        }
-        .carousel-indicators {
-            position: absolute;
-            bottom: 25px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 15px;
-        }
-        .indicator {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.9);
-            border: 3px solid #e85a4f;
-            cursor: pointer;
-        }
-        .indicator.active {
-            background: #e85a4f;
-        }
-        .btn {
-            display: inline-block;
-            padding: 12px 25px;
-            margin: 5px;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: 600;
-        }
-        .btn-primary {
-            background: linear-gradient(135deg, #e85a4f, #d84315);
-            color: white;
-        }
-        .btn-secondary {
-            background: transparent;
-            color: #2d1b14;
-            border: 2px solid #2d1b14;
-        }
-        @media (max-width: 768px) {
-            .hero {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-        }
-    </style>
+    <title>Shatarupa's Artree - Customized Handmade Paintings & Online Classes</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="hero">
-        <div class="hero-text">
-            <h1>Welcome to Shatarupa's Artree</h1>
-            <p>Where creativity blooms into beautiful handmade paintings, stylish crochet purses, and preserved resin memories</p>
-            <p>At Shatarupa's Artree, every creation tells a story. From expressive handmade paintings to beautifully crafted crochet purses, each piece is thoughtfully designed to celebrate creativity, craftsmanship, and individuality.</p>
-            <div>
-                <a href="#collections" class="btn btn-primary">View My Collections</a>
-                <a href="#gallery" class="btn btn-secondary">View Gallery</a>
-                <a href="#contact" class="btn btn-secondary">Get Custom Art</a>
-            </div>
-        </div>
-        <div class="hero-image">
-            <div class="banner-carousel">
-                <div class="carousel-slide active">
-                    <img src="artwork/banner.png" alt="Shatarupa's Artree Banner" class="banner-img">
+    <!-- Header Section -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo-container">
+                    <img src="logo.png" alt="Shatarupa's Artree Logo" class="logo">
+                    <div class="brand-text">
+                        <h1>Shatarupa's Artree</h1>
+                        <p class="tagline">Discover Art That Speaks to You</p>
+                    </div>
                 </div>
-                <div class="carousel-slide">
-                    <img src="artwork/banner1.png" alt="Shatarupa's Artree Banner 2" class="banner-img">
-                </div>
-                <div class="carousel-controls">
-                    <button class="carousel-btn" onclick="changeSlide(-1)">‹</button>
-                    <button class="carousel-btn" onclick="changeSlide(1)">›</button>
-                </div>
-                <div class="carousel-indicators">
-                    <span class="indicator active" onclick="goToSlide(0)"></span>
-                    <span class="indicator" onclick="goToSlide(1)"></span>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#about" class="nav-link">Products and Services</a></li>
+                    <li><a href="#collections" class="nav-link">Collections</a></li>
+                    <li><a href="#about-artist" class="nav-link">About Artist</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
             </div>
-        </div>
-    </div>
+        </nav>
+    </header>
 
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">Welcome to Shatarupa's Artree</h1>
+                <p class="hero-subtitle">Where creativity blooms into beautiful handmade paintings, stylish crochet purses, and preserved resin memories</p>
+                <p class="hero-description">At Shatarupa's Artree, every creation tells a story. From expressive handmade paintings to beautifully crafted crochet purses, each piece is thoughtfully designed to celebrate creativity, craftsmanship, and individuality.</p>
+                <div class="hero-buttons">
+                    <a href="#collections" class="btn btn-primary">View My Collections</a>
+                    <a href="#gallery" class="btn btn-secondary">View Gallery</a>
+                    <a href="#contact" class="btn btn-secondary">Get Custom Art</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="banner-carousel">
+                    <div class="carousel-slide active">
+                        <img src="artwork/banner.png" alt="Shatarupa's Artree Banner" class="banner-img" onload="console.log('Banner 1 loaded successfully')">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="artwork/banner1.png" alt="Shatarupa's Artree Banner 2" class="banner-img" onload="console.log('Banner 2 loaded successfully')">
+                    </div>
+                    <div class="carousel-controls">
+                        <button class="carousel-btn prev-btn" onclick="changeSlide(-1)">‹</button>
+                        <button class="carousel-btn next-btn" onclick="changeSlide(1)">›</button>
+                    </div>
+                    <div class="carousel-indicators">
+                        <span class="indicator active" onclick="goToSlide(0)"></span>
+                        <span class="indicator" onclick="goToSlide(1)"></span>
+                    </div>
+                </div>
+                <div class="floating-elements">
+                    <div class="paint-splash splash-1"></div>
+                    <div class="paint-splash splash-2"></div>
+                    <div class="paint-splash splash-3"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Products and Services</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Welcome to a world where art meets passion! I'm Shatarupa, and through Artree, I bring you the joy of handmade paintings that tell stories, capture emotions, and transform spaces.</p>
+                    <p>Whether you're looking for a custom piece that reflects your personality or wanting to learn the beautiful art of painting through my online classes, you've come to the right place.</p>
+                    
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-palette"></i>
+                            <h3>Custom Paintings</h3>
+                            <p>Personalized artwork tailored to your vision and space</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-heart"></i>
+                            <h3>Handmade with Love</h3>
+                            <p>Every piece is crafted with passion and attention to detail</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-shopping-bag"></i>
+                            <h3>👜 Stylish Crochet Purses</h3>
+                            <p>Elegant crochet purses handcrafted with attention to texture, detail, and style</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-gem"></i>
+                            <h3>💎 Memories Preserved with Resin</h3>
+                            <p>Beautiful resin art pieces that preserve your precious memories in timeless creations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collections Section -->
+    <section id="collections" class="collections">
+        <div class="container">
+            <h2 class="section-title">The Collection</h2>
+            <p class="section-subtitle">Explore our curated selection of handmade artworks</p>
+            
+            <div class="categories-grid" id="categoriesGrid">
+                <!-- Categories will be dynamically loaded here -->
+                <div class="loading-spinner">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Loading collection...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Artist Section -->
+    <section id="about-artist" class="about-artist">
+        <div class="container">
+            <h2 class="section-title">About the Artist</h2>
+            <div class="artist-content">
+                <div class="artist-text">
+                    <h3>Shatarupa Bhattacharjee</h3>
+                    <p class="artist-intro">Shatarupa Bhattacharjee is an Indian artist based in Noida whose work beautifully reflects her deep connection with nature, artistic expression, and traditional aesthetics. For Shatarupa, art is more than a profession—it is a lifelong passion and a powerful medium to express emotions, imagination, and personal experiences.</p>
+                    
+                    <div class="artist-story">
+                        <h4>Artistic Journey</h4>
+                        <p>From a young age, she was captivated by the beauty of nature and the mesmerizing play of colors in the natural world. This fascination gradually evolved into a distinctive artistic style where landscapes often carry a touch of surrealism, transporting viewers into tranquil dreamlike spaces where nature's elegance and mystery unfold.</p>
+                        
+                        <p>Shatarupa formally began her artistic training under the guidance of her mentor Suniel Chawla over a decade ago. Through dedicated learning and exploration, she developed the ability to transform ideas into meaningful compositions that resonate with viewers and fellow artists alike.</p>
+                    </div>
+
+                    <div class="artistic-style">
+                        <h4>Artistic Style & Inspiration</h4>
+                        <p>Her artworks primarily explore nature-inspired themes, surreal landscapes, and Indian traditional art forms. Deeply inspired by India's rich artistic heritage, she often reflects on the thought process and techniques of traditional Indian artists, incorporating the beauty and authenticity of natural colors and traditional styles into her work.</p>
+                        
+                        <p>Beyond painting, Shatarupa is passionate about creating handmade art pieces through different mediums. She enjoys working with painting, crochet, and resin art, exploring textures, colors, and materials to create unique artistic expressions. Each handmade piece is crafted with deep artistic passion and attention to detail.</p>
+                    </div>
+
+                    <div class="achievements">
+                        <h4>Recognition & Achievements</h4>
+                        <p>Over the years, her artworks have gained recognition both in India and internationally. She has participated in several prestigious exhibitions, including World Art Dubai, where her artwork was successfully sold, as well as international exhibitions in Poland and Russia.</p>
+                        
+                        <div class="awards-list">
+                            <h5>Honors & Awards:</h5>
+                            <ul>
+                                <li>Artqueen 2020 by Honest Nostalgia</li>
+                                <li>Maximum Painting Award by DAM Kalaakar Foundation</li>
+                                <li>Gold and Silver Medals from Bengal Art Forum</li>
+                                <li>Kala Rattan Award at the 2nd International Art Exhibition</li>
+                            </ul>
+                        </div>
+                        
+                        <p>Shatarupa has also received participation certificates and recognitions from exhibitions organized by Government of India MSME, Embassy of Mongolia, Narayan Art Academy, AccessArtZone, Bundelkhand Art Society (with Government Museum Jhansi), Sikender Jangra's Group Art Exhibition, Buddha exhibitions, and many more.</p>
+                    </div>
+
+                    <div class="artist-philosophy">
+                        <h4>Artistic Philosophy</h4>
+                        <p>Through her paintings and handmade creations, Shatarupa continues to explore new artistic possibilities while staying rooted in her love for nature, heritage, and authentic artistic expression. Her work invites viewers into a world where nature, tradition, and imagination meet on canvas and beyond.</p>
+                    </div>
+                </div>
+
+                <div class="artist-gallery">
+                    <h4>Featured Artworks</h4>
+                    <div class="artist-artworks">
+                        <div class="artwork-item">
+                            <img src="artwork/paintings_20240629_093753.jpg" alt="Artwork by Shatarupa Bhattacharjee">
+                            <div class="artwork-overlay">
+                                <span>Nature-inspired Landscape</span>
+                            </div>
+                        </div>
+                        <div class="artwork-item">
+                            <img src="artwork/paintings_20250325_194214.jpg" alt="Artwork by Shatarupa Bhattacharjee">
+                            <div class="artwork-overlay">
+                                <span>Surreal Composition</span>
+                            </div>
+                        </div>
+                        <div class="artwork-item">
+                            <img src="artwork/paintings_20250325_194253.jpg" alt="Artwork by Shatarupa Bhattacharjee">
+                            <div class="artwork-overlay">
+                                <span>Traditional Art Form</span>
+                            </div>
+                        </div>
+                        <div class="artwork-item">
+                            <img src="artwork/sold_Floral2.jpg" alt="Artwork by Shatarupa Bhattacharjee">
+                            <div class="artwork-overlay">
+                                <span>Floral Expression</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY_SECTION_START -->
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2 class="section-title">My Gallery</h2>
+            <p class="section-subtitle">Explore my collection of artworks and creations</p>
+            
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="paintings">Paintings</button>
+                <button class="filter-btn" data-filter="videos">Videos</button>
+                <button class="filter-btn" data-filter="crochet">Crochet Purses</button>
+                <button class="filter-btn" data-filter="resin">Resin Art</button>
+                <button class="filter-btn" data-filter="sold">Sold Out</button>
+            </div>
+
+            <div class="gallery-grid">
+    
+                <div class="gallery-item" data-category="paintings">
+                    <div class="gallery-image">
+                        <img src="artwork/paintings_20240629_093753.jpg" alt="20240629 093753">
+                        <div class="gallery-overlay">
+                            <h3>20240629 093753</h3>
+                            <p>Painting</p>
+                            <a href="#" class="btn-details view-fullscreen" data-src="artwork/paintings_20240629_093753.jpg" data-type="image">View Fullscreen</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="paintings">
+                    <div class="gallery-image">
+                        <img src="artwork/paintings_20250325_194214.jpg" alt="20250325 194214">
+                        <div class="gallery-overlay">
+                            <h3>20250325 194214</h3>
+                            <p>Painting</p>
+                            <a href="#" class="btn-details view-fullscreen" data-src="artwork/paintings_20250325_194214.jpg" data-type="image">View Fullscreen</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="paintings">
+                    <div class="gallery-image">
+                        <img src="artwork/paintings_20250325_194253.jpg" alt="20250325 194253">
+                        <div class="gallery-overlay">
+                            <h3>20250325 194253</h3>
+                            <p>Painting</p>
+                            <a href="#" class="btn-details view-fullscreen" data-src="artwork/paintings_20250325_194253.jpg" data-type="image">View Fullscreen</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="videos">
+                    <div class="gallery-image">
+                        <div class="video-container">
+                            <video class="art-video" controls>
+                                <source src="artwork/videos_20240213_042741.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="gallery-overlay">
+                            <h3>20240213 042741</h3>
+                            <p>Video</p>
+                            <a href="#" class="btn-details view-fullscreen" data-src="artwork/videos_20240213_042741.mp4" data-type="video">View Fullscreen</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="videos">
+                    <div class="gallery-image">
+                        <div class="video-container">
+                            <video class="art-video" controls>
+                                <source src="artwork/videos_20240224_003701.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="gallery-overlay">
+                            <h3>20240224 003701</h3>
+                            <p>Video</p>
+                            <a href="#" class="btn-details view-fullscreen" data-src="artwork/videos_20240224_003701.mp4" data-type="video">View Fullscreen</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="videos">
+                    <div class="gallery-image">
+                        <div class="video-container">
+                            <video class="art-video" controls>
+                                <source src="artwork/videos_20240303_213110.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="gallery-overlay">
+                            <h3>20240303 213110</h3>
+                            <p>Video</p>
+                            <a href="#" class="btn-details view-fullscreen" data-src="artwork/videos_20240303_213110.mp4" data-type="video">View Fullscreen</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="videos">
+                    <div class="gallery-image">
+                        <div class="video-container">
+                            <video class="art-video" controls>
+                                <source src="artwork/videos_20240515_184853.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="gallery-overlay">
+                            <h3>20240515 184853</h3>
+                            <p>Video</p>
+                            <a href="#" class="btn-details view-fullscreen" data-src="artwork/videos_20240515_184853.mp4" data-type="video">View Fullscreen</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="sold">
+                    <div class="gallery-image">
+                        <img src="artwork/sold_20250418_190842.jpg" alt="20250418 190842">
+                        <div class="gallery-overlay">
+                            <h3>20250418 190842</h3>
+                            <p>Painting</p>
+                            <a href="#" class="btn-details view-fullscreen" data-src="artwork/sold_20250418_190842.jpg" data-type="image">View Fullscreen</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="sold">
+                    <div class="gallery-image">
+                        <img src="artwork/sold_20250418_230758.jpg" alt="20250418 230758">
+                        <div class="gallery-overlay">
+                            <h3>20250418 230758</h3>
+                            <p>Painting</p>
+                            <a href="#" class="btn-details view-fullscreen" data-src="artwork/sold_20250418_230758.jpg" data-type="image">View Fullscreen</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="sold">
+                    <div class="gallery-image">
+                        <img src="artwork/sold_20250419_153036.jpg" alt="20250419 153036">
+                        <div class="gallery-overlay">
+                            <h3>20250419 153036</h3>
+                            <p>Painting</p>
+                            <a href="#" class="btn-details view-fullscreen" data-src="artwork/sold_20250419_153036.jpg" data-type="image">View Fullscreen</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="sold">
+                    <div class="gallery-image">
+                        <img src="artwork/sold_20250419_194858.jpg" alt="20250419 194858">
+                        <div class="gallery-overlay">
+                            <h3>20250419 194858</h3>
+                            <p>Painting</p>
+                            <a href="#" class="btn-details view-fullscreen" data-src="artwork/sold_20250419_194858.jpg" data-type="image">View Fullscreen</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="sold">
+                    <div class="gallery-image">
+                        <img src="artwork/sold_Abstract_eye.jpg" alt="Abstract Eye">
+                        <div class="gallery-overlay">
+                            <h3>Abstract Eye</h3>
+                            <p>Painting</p>
+                            <a href="#" class="btn-details view-fullscreen" data-src="artwork/sold_Abstract_eye.jpg" data-type="image">View Fullscreen</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="sold">
+                    <div class="gallery-image">
+                        <img src="artwork/sold_Elephant.jpg" alt="Elephant">
+                        <div class="gallery-overlay">
+                            <h3>Elephant</h3>
+                            <p>Painting</p>
+                            <a href="#" class="btn-details view-fullscreen" data-src="artwork/sold_Elephant.jpg" data-type="image">View Fullscreen</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="sold">
+                    <div class="gallery-image">
+                        <img src="artwork/sold_Floral2.jpg" alt="Floral2">
+                        <div class="gallery-overlay">
+                            <h3>Floral2</h3>
+                            <p>Painting</p>
+                            <a href="#" class="btn-details view-fullscreen" data-src="artwork/sold_Floral2.jpg" data-type="image">View Fullscreen</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="sold">
+                    <div class="gallery-image">
+                        <img src="artwork/sold_Floral4.jpg" alt="Floral4">
+                        <div class="gallery-overlay">
+                            <h3>Floral4</h3>
+                            <p>Painting</p>
+                            <a href="#" class="btn-details view-fullscreen" data-src="artwork/sold_Floral4.jpg" data-type="image">View Fullscreen</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="sold">
+                    <div class="gallery-image">
+                        <img src="artwork/sold_Floral5.jpg" alt="Floral5">
+                        <div class="gallery-overlay">
+                            <h3>Floral5</h3>
+                            <p>Painting</p>
+                            <a href="#" class="btn-details view-fullscreen" data-src="artwork/sold_Floral5.jpg" data-type="image">View Fullscreen</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="sold">
+                    <div class="gallery-image">
+                        <img src="artwork/sold_Landscape3.jpg" alt="Landscape3">
+                        <div class="gallery-overlay">
+                            <h3>Landscape3</h3>
+                            <p>Painting</p>
+                            <a href="#" class="btn-details view-fullscreen" data-src="artwork/sold_Landscape3.jpg" data-type="image">View Fullscreen</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="sold">
+                    <div class="gallery-image">
+                        <img src="artwork/sold_Sarika_Mata.jpg" alt="Sarika Mata">
+                        <div class="gallery-overlay">
+                            <h3>Sarika Mata</h3>
+                            <p>Painting</p>
+                            <a href="#" class="btn-details view-fullscreen" data-src="artwork/sold_Sarika_Mata.jpg" data-type="image">View Fullscreen</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Crochet Purses Gallery Items -->
+                <div class="gallery-item" data-category="crochet">
+                    <div class="gallery-image">
+                        <img src="artwork/Crochet/20260305_094919.jpg" alt="Crochet Purse 20260305">
+                        <div class="gallery-overlay">
+                            <h3>Stylish Crochet Purse</h3>
+                            <p>Crochet Purse</p>
+                            <a href="#" class="btn-details view-fullscreen" data-src="artwork/Crochet/20260305_094919.jpg" data-type="image">View Fullscreen</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Resin Art Gallery Items (Placeholder - can be updated when resin images are available) -->
+                <div class="gallery-item" data-category="resin">
+                    <div class="gallery-image">
+                        <img src="artwork/Paintings/Abstract_eye.jpg" alt="Resin Art Sample">
+                        <div class="gallery-overlay">
+                            <h3>Resin Art Creation</h3>
+                            <p>Resin Art</p>
+                            <a href="#" class="btn-details view-fullscreen" data-src="artwork/Paintings/Abstract_eye.jpg" data-type="image">View Fullscreen</a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <!-- Lightbox -->
+        <div id="lightbox" class="lightbox">
+            <span class="close-lightbox">&times;</span>
+            <div class="lightbox-content">
+                <!-- Content will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- Carousel JavaScript -->
     <script>
         let currentSlide = 0;
         const slides = document.querySelectorAll('.carousel-slide');
         const indicators = document.querySelectorAll('.indicator');
+        let autoSlideInterval;
 
         function showSlide(index) {
-            slides.forEach(slide => slide.style.display = 'none');
-            indicators.forEach(indicator => indicator.classList.remove('active'));
+            // Hide all slides
+            slides.forEach(slide => {
+                slide.style.display = 'none';
+                slide.style.opacity = '0';
+            });
             
+            // Remove active class from all indicators
+            indicators.forEach(indicator => {
+                indicator.classList.remove('active');
+            });
+            
+            // Show current slide
             slides[index].style.display = 'block';
+            setTimeout(() => {
+                slides[index].style.opacity = '1';
+            }, 50);
             indicators[index].classList.add('active');
             currentSlide = index;
         }
 
         function changeSlide(direction) {
             currentSlide += direction;
-            if (currentSlide >= slides.length) currentSlide = 0;
-            if (currentSlide < 0) currentSlide = slides.length - 1;
+            
+            if (currentSlide >= slides.length) {
+                currentSlide = 0;
+            } else if (currentSlide < 0) {
+                currentSlide = slides.length - 1;
+            }
+            
             showSlide(currentSlide);
+            resetAutoSlide();
         }
 
         function goToSlide(index) {
             showSlide(index);
+            resetAutoSlide();
         }
 
-        // Auto-rotate
-        setInterval(() => changeSlide(1), 4000);
+        function autoSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
 
-        showSlide(0);
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(autoSlide, 4000);
+        }
+
+        function resetAutoSlide() {
+            clearInterval(autoSlideInterval);
+            startAutoSlide();
+        }
+
+        // Initialize carousel when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            if (slides.length > 0) {
+                showSlide(0);
+                startAutoSlide();
+            }
+        });
+
+        // Pause auto-slide on hover
+        const carousel = document.querySelector('.banner-carousel');
+        if (carousel) {
+            carousel.addEventListener('mouseenter', () => {
+                clearInterval(autoSlideInterval);
+            });
+            
+            carousel.addEventListener('mouseleave', () => {
+                startAutoSlide();
+            });
+        }
     </script>
+
+    <!-- Collections Auto-Loader Script -->
+    <script>
+    // Auto-load collections from artwork folder
+    document.addEventListener('DOMContentLoaded', function() {
+        loadCollections();
+    });
+
+    async function loadCollections() {
+        const categoriesGrid = document.getElementById('categoriesGrid');
+        
+        try {
+            // Try to load from Google Sheets first, fallback to local configuration
+            let collectionData = await loadFromGoogleSheets();
+            
+            if (!collectionData || collectionData.length === 0) {
+                console.log('Google Sheets failed, using local data');
+                // Fallback to local folder configuration
+                collectionData = getLocalCollectionData();
+            }
+
+            // Organize data by categories
+            const categories = organizeByCategories(collectionData);
+            
+            // Store collection data for modal access
+            sessionStorage.setItem('collectionsData', JSON.stringify(collectionData));
+
+            // Clear loading spinner
+            categoriesGrid.innerHTML = '';
+
+            // Create category cards
+            categories.forEach((category, index) => {
+                const card = createCategoryCard(category, index);
+                categoriesGrid.appendChild(card);
+            });
+
+            // If no categories found, show message
+            if (categories.length === 0) {
+                categoriesGrid.innerHTML = `
+                    <div class="error-message">
+                        <i class="fas fa-folder-open"></i>
+                        <p>No collection items found. Please check your Google Sheet or add images to collection folders.</p>
+                    </div>
+                `;
+            }
+
+        } catch (error) {
+            console.error('Error loading collections:', error);
+            categoriesGrid.innerHTML = `
+                <div class="error-message">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>Error loading collections. Please try refreshing the page.</p>
+                </div>
+            `;
+        }
+    }
+
+    // Function to organize data by categories
+    function organizeByCategories(collectionData) {
+        const categories = {
+            'Paintings': {
+                title: 'Paintings',
+                subtitle: 'Handmade paintings with love and passion',
+                thumbnail: '',
+                items: []
+            },
+            'Handmade Crochet Purse': {
+                title: 'Handmade Crochet Purse',
+                subtitle: 'Beautiful crochet purses crafted with care',
+                thumbnail: '',
+                items: []
+            },
+            'Memories with Resin': {
+                title: 'Memories with Resin',
+                subtitle: 'Preserve your memories in beautiful resin art',
+                thumbnail: '',
+                items: []
+            },
+            'Videos': {
+                title: 'Videos',
+                subtitle: 'Watch the creative process and techniques',
+                thumbnail: '',
+                items: []
+            }
+        };
+
+        // Categorize items based on folder or category field
+        collectionData.forEach(item => {
+            let category = null;
+            
+            // Determine category based on image path or category field
+            if (item.image) {
+                if (item.image.includes('Paintings') || item.category?.includes('PAINTING')) {
+                    category = categories['Paintings'];
+                } else if (item.image.includes('Crochet') || item.category?.includes('CROCHET')) {
+                    category = categories['Handmade Crochet Purse'];
+                } else if (item.image.includes('Resin') || item.category?.includes('RESIN')) {
+                    category = categories['Memories with Resin'];
+                } else if (item.image.includes('Videos') || item.category?.includes('VIDEO')) {
+                    category = categories['Videos'];
+                }
+            }
+
+            if (category) {
+                category.items.push(item);
+                // Set thumbnail if not already set
+                if (!category.thumbnail && item.image) {
+                    category.thumbnail = item.image;
+                }
+            }
+        });
+
+        // Return only categories with items, but include Videos even if empty to show the section
+        return Object.values(categories).filter(cat => cat.items.length > 0 || cat.title === 'Videos');
+    }
+
+    // Function to create a category card
+    function createCategoryCard(category, index) {
+        const card = document.createElement('div');
+        card.className = 'category-card';
+        card.style.animationDelay = `${index * 0.1}s`;
+
+        card.innerHTML = `
+            <div class="category-thumbnail" onclick="expandCategory('${category.title}', this)">
+                <img src="${category.thumbnail || 'artwork/Paintings/Abstract_eye.jpg'}" alt="${category.title}" onerror="this.src='artwork/Paintings/Abstract_eye.jpg'">
+                <div class="category-overlay">
+                    <h3 class="category-title">${category.title}</h3>
+                    <p class="category-subtitle">${category.subtitle}</p>
+                </div>
+            </div>
+            <div class="category-content" id="category-${category.title.replace(/\s+/g, '-')}">
+                <button class="close-category" onclick="closeCategory('${category.title}')">Close ${category.title}</button>
+                <div class="category-items-grid">
+                    ${category.items.map(item => createCategoryItem(item)).join('')}
+                </div>
+            </div>
+        `;
+
+        return card;
+    }
+
+    // Function to create a category item
+    function createCategoryItem(item) {
+        const statusClass = item.status === 'available' ? 'available' : 
+                           item.status === 'sold-out' ? 'sold-out' : 'curing';
+        const statusText = item.status === 'available' ? 'Available' : 
+                          item.status === 'sold-out' ? 'Sold Out' : 'Curing Phase';
+
+        return `
+            <div class="category-item" onclick="showItemDetails('${item.name}', '${item.image}', '${item.price}', '${item.status}', '${item.buttonText || 'View Details'}', '${item.description || ''}')">
+                <div class="category-item-image">
+                    <img src="${item.image}" alt="${item.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="placeholder-image" style="display: none; width: 100%; height: 100%; background: #e8e8e8; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-image" style="font-size: 2rem; color: #ccc;"></i>
+                    </div>
+                    <span class="status-badge ${statusClass}" style="position: absolute; top: 10px; right: 10px; padding: 4px 8px; border-radius: 12px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; background: ${statusClass === 'available' ? 'var(--soft-green)' : statusClass === 'sold-out' ? 'var(--primary-coral)' : 'var(--primary-gold)'}; color: white;">${statusText}</span>
+                </div>
+                <div class="category-item-content">
+                    <h4 class="category-item-name">${item.name}</h4>
+                    <p class="category-item-price">${item.price}</p>
+                    <button class="btn ${item.buttonClass || 'btn-primary'}">${item.buttonText || 'View Details'}</button>
+                </div>
+            </div>
+        `;
+    }
+
+    // Function to expand a category
+    function expandCategory(categoryTitle, thumbnailElement) {
+        const categoryCard = thumbnailElement.closest('.category-card');
+        const allCards = document.querySelectorAll('.category-card');
+        
+        // Close all other categories
+        allCards.forEach(card => {
+            if (card !== categoryCard) {
+                card.classList.remove('expanded');
+            }
+        });
+        
+        // Expand this category
+        categoryCard.classList.add('expanded');
+        
+        // Scroll to the expanded category
+        setTimeout(() => {
+            categoryCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
+    }
+
+    // Function to close a category
+    function closeCategory(categoryTitle) {
+        const categoryId = categoryTitle.replace(/\s+/g, '-');
+        const categoryCard = document.querySelector(`#category-${categoryId}`).closest('.category-card');
+        categoryCard.classList.remove('expanded');
+    }
+
+    // Function to show item details in a modal
+    function showItemDetails(name, image, price, status, buttonText, description) {
+        // Find the item data from our collections
+        const collectionsData = JSON.parse(sessionStorage.getItem('collectionsData') || '[]');
+        let itemData = collectionsData.find(item => item.name === name);
+        
+        // If we couldn't find the item data in collections, use the passed parameters
+        if (!itemData) {
+            itemData = {
+                name: name,
+                image: image,
+                price: price,
+                status: status,
+                buttonText: buttonText,
+                description: description || 'Beautiful handmade artwork crafted with passion and attention to detail.'
+            };
+        }
+
+        // Ensure description is not undefined
+        if (!itemData.description || itemData.description === 'undefined') {
+            itemData.description = 'Beautiful handmade artwork crafted with passion and attention to detail.';
+        }
+
+        // Extract item number from name or create one
+        const itemNumber = itemData.name.replace(/[^a-zA-Z0-9]/g, '').toUpperCase() || 'ITEM' + Math.random().toString(36).substr(2, 6).toUpperCase();
+
+        // Create modal HTML
+        const modalHTML = `
+            <div id="itemDetailsModal" class="item-details-modal">
+                <div class="modal-overlay" onclick="closeItemDetails()"></div>
+                <div class="modal-content">
+                    <button class="modal-close" onclick="closeItemDetails()">&times;</button>
+                    <div class="modal-image-full">
+                        <img src="${itemData.image}" alt="${itemData.name}" onerror="this.src='artwork/Paintings/Abstract_eye.jpg'">
+                    </div>
+                    <div class="modal-info">
+                        <h2 class="modal-title">${itemData.name}</h2>
+                        <p class="modal-price">${itemData.price}</p>
+                        <p class="modal-item-number">Item Number: ${itemNumber}</p>
+                        <p class="modal-description">${itemData.description}</p>
+                        <div class="modal-actions">
+                            <button class="btn btn-whatsapp" onclick="sendWhatsAppMessage('${itemNumber}', '${itemData.name}', '${itemData.price}')">
+                                <i class="fab fa-whatsapp"></i> WhatsApp for Details
+                            </button>
+                            <button class="btn btn-secondary" onclick="closeItemDetails()">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // Add modal to body
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
+        
+        // Show modal with animation
+        setTimeout(() => {
+            document.getElementById('itemDetailsModal').classList.add('show');
+        }, 10);
+    }
+
+    // Function to send WhatsApp message
+    function sendWhatsAppMessage(itemNumber, itemName, price) {
+        const message = `Hi! I'm interested in Item Number: ${itemNumber}\n\nItem: ${itemName}\nPrice: ${price}\n\nPlease provide more details about this item.`;
+        const whatsappUrl = `https://wa.me/919873295469?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
+    }
+
+    // Function to close item details modal
+    function closeItemDetails() {
+        const modal = document.getElementById('itemDetailsModal');
+        if (modal) {
+            modal.classList.remove('show');
+            setTimeout(() => {
+                modal.remove();
+            }, 300);
+        }
+    }
+
+    // Function to load data from Google Sheets
+    async function loadFromGoogleSheets() {
+        try {
+            const sheetId = '14djNIXNtg7PkZB1rf1ik_QUNliPs_d0qN7d7n7sjnKE';
+            const gid = '1619201002';
+            const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&gid=${gid}`;
+            
+            const response = await fetch(url);
+            const text = await response.text();
+            
+            // Parse the Google Sheets response
+            const jsonStart = text.indexOf('{');
+            const jsonEnd = text.lastIndexOf('}') + 1;
+            const jsonData = JSON.parse(text.substring(jsonStart, jsonEnd));
+            
+            const rows = jsonData.table.rows;
+            const collectionItems = [];
+            
+            // Skip header row and process data rows
+            for (let i = 1; i < rows.length; i++) {
+                const row = rows[i].c;
+                if (row && row.length >= 8) {
+                    const item = {
+                        image: row[0]?.v || '', // Image path
+                        name: row[1]?.v || '', // Product name
+                        category: row[2]?.v || '', // Category
+                        price: row[3]?.v || '', // Price
+                        status: row[4]?.v || 'available', // Status
+                        buttonText: row[5]?.v || 'View Artwork', // Button text
+                        buttonClass: row[6]?.v || 'btn-primary', // Button class
+                        description: row[7]?.v || 'Beautiful handmade artwork crafted with passion and attention to detail.' // Description
+                    };
+                    
+                    // Ensure description is not undefined or empty
+                    if (!item.description || item.description === 'undefined' || item.description === '') {
+                        item.description = 'Beautiful handmade artwork crafted with passion and attention to detail.';
+                    }
+                    
+                    // Only include items with valid image paths
+                    if (item.image) {
+                        collectionItems.push(item);
+                    }
+                }
+            }
+            
+            return collectionItems;
+            
+        } catch (error) {
+            console.warn('Failed to load from Google Sheets, using fallback:', error);
+            return null;
+        }
+    }
+
+    // Fallback function for local collection data (matches Google Sheet data)
+    function getLocalCollectionData() {
+        return [
+            // Paintings - Available
+            { image: 'artwork/Paintings/20240629_093753.jpg', name: 'Nature-inspired Landscape', category: 'HANDMADE PAINTING', price: '₹5000', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Beautiful nature-inspired landscape painting with vibrant colors and serene atmosphere' },
+            { image: 'artwork/Paintings/20250325_194214.jpg', name: 'Surreal Composition', category: 'HANDMADE PAINTING', price: '₹5500', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Surreal artwork that blends reality with imagination in unique composition' },
+            { image: 'artwork/Paintings/20250325_194253.jpg', name: 'Traditional Art Form', category: 'HANDMADE PAINTING', price: '₹4500', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Traditional art form showcasing cultural heritage and artistic techniques' },
+            { image: 'artwork/Paintings/Abstract_eye.jpg', name: 'Abstract Eye', category: 'HANDMADE PAINTING', price: '₹6000', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Mesmerizing abstract eye painting with deep symbolism and artistic expression' },
+            { image: 'artwork/Paintings/Birds.jpg', name: 'Birds', category: 'HANDMADE PAINTING', price: '₹4000', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Beautiful birds in flight capturing freedom and natural beauty' },
+            { image: 'artwork/Paintings/Car1.jpg', name: 'Classic Car', category: 'HANDMADE PAINTING', price: '₹5000', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Classic car painting with attention to detail and vintage charm' },
+            { image: 'artwork/Paintings/Car2.jpg', name: 'Sports Car', category: 'HANDMADE PAINTING', price: '₹5500', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Dynamic sports car painting showcasing speed and modern design' },
+            { image: 'artwork/Paintings/Durga.jpg', name: 'Goddess Durga', category: 'HANDMADE PAINTING', price: '₹7000', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Divine goddess Durga painting representing power and feminine strength' },
+            { image: 'artwork/Paintings/Eye.jpg', name: 'Realistic Eye', category: 'HANDMADE PAINTING', price: '₹4500', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Hyper-realistic eye painting with incredible detail and depth' },
+            { image: 'artwork/Paintings/Floral1.heic', name: 'Floral Beauty', category: 'HANDMADE PAINTING', price: '₹4000', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Delicate floral composition celebrating natural beauty and elegance' },
+            { image: 'artwork/Paintings/Floral3.jpg', name: 'Garden Florals', category: 'HANDMADE PAINTING', price: '₹3500', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Vibrant garden floral arrangement with fresh spring colors' },
+            { image: 'artwork/Paintings/Landscape2.jpg', name: 'Serene Landscape', category: 'HANDMADE PAINTING', price: '₹4500', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Peaceful landscape painting capturing nature\'s tranquility' },
+            { image: 'artwork/Paintings/Landscape4.jpg', name: 'Mountain Vista', category: 'HANDMADE PAINTING', price: '₹5000', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Majestic mountain landscape with dramatic lighting and depth' },
+            { image: 'artwork/Paintings/Landscape_Snow.jpg', name: 'Winter Wonderland', category: 'HANDMADE PAINTING', price: '₹4000', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Serene snow-covered landscape with peaceful winter atmosphere' },
+            { image: 'artwork/Paintings/Landscape_forest_hut.jpg', name: 'Forest Retreat', category: 'HANDMADE PAINTING', price: '₹3500', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Charming forest hut scene surrounded by lush greenery' },
+            { image: 'artwork/Paintings/Portrait1.jpg', name: 'Elegant Portrait', category: 'HANDMADE PAINTING', price: '₹6000', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Sophisticated portrait painting capturing personality and emotion' },
+            { image: 'artwork/Paintings/Shiva.jpg', name: 'Lord Shiva', category: 'HANDMADE PAINTING', price: '₹8000', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Divine Lord Shiva painting with intricate details and spiritual energy' },
+            { image: 'artwork/Paintings/Still1.jpg', name: 'Still Life', category: 'HANDMADE PAINTING', price: '₹3000', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Classic still life composition with artistic arrangement' },
+            { image: 'artwork/Paintings/Still2.jpg', name: 'Modern Still', category: 'HANDMADE PAINTING', price: '₹3500', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Contemporary still life with modern artistic elements' },
+            { image: 'artwork/Paintings/Tiger.jpg', name: 'Majestic Tiger', category: 'HANDMADE PAINTING', price: '₹6500', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Powerful tiger painting showcasing wildlife strength and beauty' },
+            
+            // Crochet Purses - Available
+            { image: 'artwork/Crochet/20260305_094919.jpg', name: 'Stylish Crochet Purse', category: 'HANDMADE CROCHET', price: '₹2500', status: 'available', buttonText: 'View Artwork', buttonClass: 'btn-primary', description: 'Elegant crochet purse handcrafted with premium yarn and attention to detail' },
+            
+            // Videos - Available
+            { image: 'artwork/Short Painting Videos/20240213_042741.mp4', name: 'Art Creation Process', category: 'VIDEO', price: '₹0', status: 'available', buttonText: 'Watch Video', buttonClass: 'btn-secondary', description: 'Watch the creative process behind this beautiful artwork' },
+            { image: 'artwork/Short Painting Videos/20240224_003701.mp4', name: 'Painting Technique', category: 'VIDEO', price: '₹0', status: 'available', buttonText: 'Watch Video', buttonClass: 'btn-secondary', description: 'Learn painting techniques and artistic methods' },
+            { image: 'artwork/Short Painting Videos/20240303_213110.mp4', name: 'Art Studio Tour', category: 'VIDEO', price: '₹0', status: 'available', buttonText: 'Watch Video', buttonClass: 'btn-secondary', description: 'Take a virtual tour of the art studio and workspace' },
+            { image: 'artwork/Short Painting Videos/20240515_184853.mp4', name: 'Final Artwork', category: 'VIDEO', price: '₹0', status: 'available', buttonText: 'Watch Video', buttonClass: 'btn-secondary', description: 'See the final touches and completion of artwork' },
+            
+            // Sold Out Items
+            { image: 'artwork/Sold Out/20250418_190842.jpg', name: 'Sold Landscape', category: 'HANDMADE PAINTING', price: 'SOLD', status: 'sold-out', buttonText: 'Sold Out', buttonClass: 'btn-secondary', description: 'Beautiful landscape painting - already sold to a happy customer' },
+            { image: 'artwork/Sold Out/20250418_230758.jpg', name: 'Sold Abstract', category: 'HANDMADE PAINTING', price: 'SOLD', status: 'sold-out', buttonText: 'Sold Out', buttonClass: 'btn-secondary', description: 'Abstract artwork - already sold to a happy customer' },
+            { image: 'artwork/Sold Out/20250419_153036.jpg', name: 'Sold Portrait', category: 'HANDMADE PAINTING', price: 'SOLD', status: 'sold-out', buttonText: 'Sold Out', buttonClass: 'btn-secondary', description: 'Portrait painting - already sold to a happy customer' },
+            { image: 'artwork/Sold Out/20250419_194858.jpg', name: 'Sold Nature', category: 'HANDMADE PAINTING', price: 'SOLD', status: 'sold-out', buttonText: 'Sold Out', buttonClass: 'btn-secondary', description: 'Nature painting - already sold to a happy customer' },
+            { image: 'artwork/Sold Out/Abstract_eye.jpg', name: 'Sold Abstract Eye', category: 'HANDMADE PAINTING', price: 'SOLD', status: 'sold-out', buttonText: 'Sold Out', buttonClass: 'btn-secondary', description: 'Abstract eye painting - already sold to a happy customer' },
+            { image: 'artwork/Sold Out/Elephant.jpg', name: 'Sold Elephant', category: 'HANDMADE PAINTING', price: 'SOLD', status: 'sold-out', buttonText: 'Sold Out', buttonClass: 'btn-secondary', description: 'Elephant painting - already sold to a happy customer' },
+            { image: 'artwork/Sold Out/Floral2.jpg', name: 'Sold Floral', category: 'HANDMADE PAINTING', price: 'SOLD', status: 'sold-out', buttonText: 'Sold Out', buttonClass: 'btn-secondary', description: 'Floral painting - already sold to a happy customer' },
+            { image: 'artwork/Sold Out/Floral4.jpg', name: 'Sold Garden', category: 'HANDMADE PAINTING', price: 'SOLD', status: 'sold-out', buttonText: 'Sold Out', buttonClass: 'btn-secondary', description: 'Garden painting - already sold to a happy customer' },
+            { image: 'artwork/Sold Out/Floral5.jpg', name: 'Sold Spring', category: 'HANDMADE PAINTING', price: 'SOLD', status: 'sold-out', buttonText: 'Sold Out', buttonClass: 'btn-secondary', description: 'Spring painting - already sold to a happy customer' },
+            { image: 'artwork/Sold Out/Landscape3.jpg', name: 'Sold Vista', category: 'HANDMADE PAINTING', price: 'SOLD', status: 'sold-out', buttonText: 'Sold Out', buttonClass: 'btn-secondary', description: 'Landscape painting - already sold to a happy customer' },
+            { image: 'artwork/Sold Out/Sarika_Mata.jpg', name: 'Sold Goddess', category: 'HANDMADE PAINTING', price: 'SOLD', status: 'sold-out', buttonText: 'Sold Out', buttonClass: 'btn-secondary', description: 'Goddess painting - already sold to a happy customer' }
+        ];
+    }
+
+    function createCollectionCard(item, index) {
+        const card = document.createElement('div');
+        card.className = 'collection-card';
+        card.style.animationDelay = `${index * 0.1}s`;
+
+        const statusClass = item.status === 'available' ? 'available' : 
+                           item.status === 'sold-out' ? 'sold-out' : 'curing';
+        const statusText = item.status === 'available' ? 'Available' : 
+                          item.status === 'sold-out' ? 'Sold Out' : 'Curing Phase';
+
+        card.innerHTML = `
+            <div class="collection-image">
+                <img src="${item.image}" alt="${item.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="placeholder-image" style="display: none;">
+                    <i class="fas fa-image"></i>
+                </div>
+                <span class="status-badge ${statusClass}">${statusText}</span>
+            </div>
+            <div class="collection-content">
+                <span class="category">${item.category}</span>
+                <h3 class="product-name">${item.name}</h3>
+                <p class="price">${item.price}</p>
+                <button class="btn ${item.buttonClass}">${item.buttonText}</button>
+            </div>
+        `;
+
+        return card;
+    }
+
+    // Function to refresh collections (call this when new images are added)
+    function refreshCollections() {
+        const collectionsGrid = document.getElementById('collectionsGrid');
+        collectionsGrid.innerHTML = `
+            <div class="loading-spinner">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Refreshing collection...</p>
+            </div>
+        `;
+        loadCollections();
+    }
+    </script>
+    
+    <!-- Add JavaScript for lightbox and filtering -->
+    <script>
+    // Gallery filtering
+    document.addEventListener('DOMContentLoaded', function() {
+        // Filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxContent = document.querySelector('.lightbox-content');
+        const closeLightbox = document.querySelector('.close-lightbox');
+        
+        document.querySelectorAll('.view-fullscreen').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const src = this.getAttribute('data-src');
+                const type = this.getAttribute('data-type');
+                
+                if (type === 'video') {
+                    lightboxContent.innerHTML = `
+                        <video controls autoplay style="width: 100%; max-height: 80vh;">
+                            <source src="${src}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    `;
+                } else {
+                    lightboxContent.innerHTML = `<img src="${src}" style="max-width: 100%; max-height: 80vh; display: block; margin: 0 auto;">`;
+                }
+                
+                lightbox.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        // Close lightbox
+        closeLightbox.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close when clicking outside the content
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Close with ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.style.display === 'flex') {
+                lightbox.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    });
+    </script>
+    
+    
+    <!-- Add JavaScript for lightbox and filtering -->
+    <script>
+    // Gallery filtering
+    document.addEventListener('DOMContentLoaded', function() {
+        // Filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxContent = document.querySelector('.lightbox-content');
+        const closeLightbox = document.querySelector('.close-lightbox');
+        
+        document.querySelectorAll('.view-fullscreen').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const src = this.getAttribute('data-src');
+                const type = this.getAttribute('data-type');
+                
+                if (type === 'video') {
+                    lightboxContent.innerHTML = `
+                        <video controls autoplay style="width: 100%; max-height: 80vh;">
+                            <source src="${src}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    `;
+                } else {
+                    lightboxContent.innerHTML = `<img src="${src}" style="max-width: 100%; max-height: 80vh; display: block; margin: 0 auto;">`;
+                }
+                
+                lightbox.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        // Close lightbox
+        closeLightbox.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close when clicking outside the content
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Close with ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.style.display === 'flex') {
+                lightbox.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    });
+    </script>
+    
+    
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Ready to create something beautiful together?</p>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's Connect!</h3>
+                    <p>I'd love to hear about your artistic vision and help bring it to life. Whether you're interested in a custom painting or want to join my online classes, let's start the conversation!</p>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <i class="fab fa-whatsapp"></i>
+                            <div>
+                                <h4>WhatsApp</h4>
+                                <p><a href="https://wa.me/919821220546" style="color: inherit; text-decoration: none;">+91 98212 20546</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p><a href="mailto:shatarupabhattacharjee@gmail.com" style="color: inherit; text-decoration: none;">shatarupabhattacharjee@gmail.com</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <p><a href="tel:+919821220546" style="color: inherit; text-decoration: none;">+91 98212 20546</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <select id="service" name="service" required>
+                                <option value="">Select Service</option>
+                                <option value="custom-painting">Custom Painting</option>
+                                <option value="online-classes">Online Classes</option>
+                                <option value="home-decor">Home Decor Art</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Tell me about your project or questions..." rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- WhatsApp Button -->
+            <div class="whatsapp-float">
+                <a href="https://wa.me/919821220546?text=Hi%20Shatarupa!%20I'm%20interested%20in%20your%20artwork%20and%20would%20like%20to%20know%20more." target="_blank" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>Chat on WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo-container">
+                        <img src="logo.png" alt="Shatarupa's Artree Logo" class="footer-logo">
+                        <h3>Shatarupa's Artree</h3>
+                    </div>
+                    <p>Creating beautiful handmade paintings and sharing the joy of art through online classes.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li>Custom Paintings</li>
+                        <li>Online Classes</li>
+                        <li>Home Decor Art</li>
+                        <li>Portrait Commissions</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Follow Me</h4>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/shatarupabhattacharjee" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/shatarupar" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.youtube.com/@shatarupasartree" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Shatarupa's Artree. All rights reserved. Made with ❤️ for art lovers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
