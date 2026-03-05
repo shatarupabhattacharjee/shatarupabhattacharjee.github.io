@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
         typingIndicator.style.display = 'none';
     }
 
-    // Generate image using our backend API
+    // Generate art reference using Ollama backend
     async function generateImage(prompt) {
         showTypingIndicator();
         
@@ -52,14 +52,26 @@ document.addEventListener('DOMContentLoaded', function() {
             const data = await response.json();
             
             if (!response.ok) {
-                throw new Error(data.error || 'Failed to generate image');
+                throw new Error(data.error || 'Failed to generate art reference');
             }
             
             hideTypingIndicator();
-            return data.imageUrl;
+            
+            // Add cache-busting parameter for non-placeholder images
+            const imageUrl = data.isPlaceholder ? 
+                data.imageUrl : 
+                `${data.imageUrl}${data.imageUrl.includes('?') ? '&' : '?'}t=${Date.now()}`;
+            
+            return {
+                imageUrl: imageUrl,
+                textResponse: data.textResponse,
+                prompt: data.prompt,
+                timestamp: data.timestamp,
+                isPlaceholder: data.isPlaceholder || false
+            };
             
         } catch (error) {
-            console.error('Error generating image:', error);
+            console.error('Error generating art reference:', error);
             hideTypingIndicator();
             addMessage(`I'm sorry, I encountered an error: ${error.message}`, false);
             return null;
@@ -74,44 +86,40 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add user message to chat
         addMessage(prompt, true);
         userInput.value = '';
+        userInput.disabled = true;
         
-        // Generate image based on user's prompt
-        const imageUrl = await generateImage(prompt);
-        
-        if (imageUrl) {
-            // Create image element
-            const img = document.createElement('img');
-            img.src = imageUrl;
-            img.alt = `Generated art: ${prompt}`;
-            img.className = 'generated-image';
+        try {
+            // Show loading message
+            const loadingMessage = document.createElement('div');
+            loadingMessage.className = 'message bot';
+            loadingMessage.innerHTML = `
+                <div class="message-content">
+                    <p>Generating your art reference... This may take a moment.</p>
+                    <div class="typing-indicator">
+                        <span class="typing-dot"></span>
             
-            // Create download button
-            const downloadBtn = document.createElement('button');
-            downloadBtn.className = 'btn';
-            downloadBtn.style.marginTop = '10px';
-            downloadBtn.innerHTML = '<i class="fas fa-download"></i> Download Image';
-            downloadBtn.onclick = function() {
-                const link = document.createElement('a');
-                link.href = imageUrl;
-                link.download = `art-reference-${Date.now()}.jpg`;
-                link.click();
-            };
+            // Generate art reference based on user's prompt
+            const result = await generateImage(prompt);
             
-            // Create container for image and button
-            const container = document.createElement('div');
-            container.appendChild(img);
-            container.appendChild(document.createElement('br'));
-            container.appendChild(downloadBtn);
+            // Remove typing indicator
+            const messages = document.querySelectorAll('.message:not(.user)');
+            if (messages.length > 0) {
+                messages[messages.length - 1].remove();
+            }
             
-            // Add bot message with generated image
-            addMessage(container, false);
-            
-            // Add some helpful text
-            const text = document.createElement('div');
-            text.innerHTML = `Here's your generated reference image for: <strong>${prompt}</strong>. Feel free to download it or ask for another one!`;
-            addMessage(text, false);
-        } else {
-            addMessage("I'm sorry, I couldn't generate an image for that. Could you try a different description?", false);
+            if (result) {
+                // Create and append the art card
+                const artCard = createArtCard(result);
+                addMessage(artCard, false);
+            } else {
+                addMessage("I'm sorry, I couldn't generate a reference for that. Could you try a different description?", false);
+            }
+        } catch (error) {
+            console.error('Error handling user input:', error);
+            addMessage(`I'm sorry, something went wrong: ${error.message}`, false);
+        } finally {
+            userInput.disabled = false;
+            userInput.focus();
         }
     }
 
