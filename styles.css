@@ -163,11 +163,18 @@ body {
     max-width: none;
     margin: 0 auto;
     padding: 0 20px;
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-    gap: 0.3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
     align-items: center;
-    min-height: 1000px;
+    min-height: 100vh;
+    justify-content: center;
+}
+
+.hero-text {
+    text-align: center;
+    max-width: 800px;
+    order: 2;
 }
 
 .hero-image {
@@ -177,20 +184,19 @@ body {
     align-items: center;
     visibility: visible;
     opacity: 1;
-}
-
-.hero-text {
-    text-align: left;
+    order: 1;
+    width: 100%;
 }
 
 .banner-carousel {
     position: relative;
-    width: 100%;
-    max-width: none;
+    width: 90vw;
+    max-width: 90vw;
     height: auto;
     overflow: visible;
     border-radius: 20px;
     box-shadow: 0 20px 60px rgba(45, 27, 20, 0.15);
+    margin: 0 auto;
 }
 
 .carousel-slide {
@@ -212,13 +218,12 @@ body {
     height: auto;
     display: block;
     border-radius: 20px;
-    object-fit: none;
+    object-fit: contain;
     object-position: center;
     background: white;
     padding: 0;
     border: none;
-    max-height: none;
-    min-height: none;
+    max-height: 70vh;
 }
 
 .carousel-controls {
@@ -1569,9 +1574,34 @@ body {
     }
     
     .hero-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+        flex-direction: column;
+        gap: 1.5rem;
         text-align: center;
+        min-height: auto;
+        padding: 2rem 1rem;
+    }
+    
+    .hero-text {
+        order: 2;
+        max-width: 100%;
+    }
+    
+    .hero-image {
+        order: 1;
+        width: 100%;
+    }
+    
+    .banner-carousel {
+        max-width: 95vw;
+        width: 95vw;
+        height: auto;
+    }
+    
+    .carousel-slide .banner-img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        max-height: 60vh;
     }
     
     .hero-title {
@@ -1597,12 +1627,6 @@ body {
         font-size: 0.9rem;
     }
     
-    .banner-carousel {
-        max-width: none;
-        width: 100%;
-        height: auto;
-    }
-    
     .carousel-btn {
         width: 55px;
         height: 55px;
@@ -1621,14 +1645,6 @@ body {
     .carousel-indicators {
         bottom: 30px;
         gap: 20px;
-    }
-    
-    .carousel-slide .banner-img {
-        width: 100%;
-        height: auto;
-        object-fit: none;
-        max-height: none;
-        min-height: none;
     }
     
     .floating-elements {
