@@ -175,11 +175,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    order: 2;
+    visibility: visible;
+    opacity: 1;
 }
 
 .hero-text {
-    order: 1;
+    text-align: left;
 }
 
 .banner-img {
@@ -1483,14 +1484,6 @@ body {
         grid-template-columns: 1fr;
         gap: 2rem;
         text-align: center;
-    }
-    
-    .hero-text {
-        order: 1;
-    }
-    
-    .hero-image {
-        order: 2;
     }
     
     .hero-title {
