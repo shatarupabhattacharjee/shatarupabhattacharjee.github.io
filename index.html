@@ -658,22 +658,10 @@
     // Function to show item details in a modal
     function showItemDetails(name, image, price, status, buttonText, description) {
         // Find the item data from our collections
-        const allCategories = document.querySelectorAll('.category-card');
-        let itemData = null;
+        const collectionsData = JSON.parse(sessionStorage.getItem('collectionsData') || '[]');
+        let itemData = collectionsData.find(item => item.name === name);
         
-        allCategories.forEach(card => {
-            const items = card.querySelectorAll('.category-item');
-            items.forEach(item => {
-                const itemName = item.querySelector('.category-item-name')?.textContent;
-                if (itemName === name) {
-                    // Get the full item data from the collections
-                    const collectionsData = JSON.parse(sessionStorage.getItem('collectionsData') || '[]');
-                    itemData = collectionsData.find(item => item.name === name);
-                }
-            });
-        });
-
-        // If we couldn't find the item data, use the passed parameters
+        // If we couldn't find the item data in collections, use the passed parameters
         if (!itemData) {
             itemData = {
                 name: name,
@@ -683,6 +671,11 @@
                 buttonText: buttonText,
                 description: description || 'Beautiful handmade artwork crafted with passion and attention to detail.'
             };
+        }
+
+        // Ensure description is not undefined
+        if (!itemData.description || itemData.description === 'undefined') {
+            itemData.description = 'Beautiful handmade artwork crafted with passion and attention to detail.';
         }
 
         // Extract item number from name or create one
@@ -761,7 +754,7 @@
             // Skip header row and process data rows
             for (let i = 1; i < rows.length; i++) {
                 const row = rows[i].c;
-                if (row && row.length >= 7) {
+                if (row && row.length >= 8) {
                     const item = {
                         image: row[0]?.v || '', // Image path
                         name: row[1]?.v || '', // Product name
@@ -772,6 +765,11 @@
                         buttonClass: row[6]?.v || 'btn-primary', // Button class
                         description: row[7]?.v || 'Beautiful handmade artwork crafted with passion and attention to detail.' // Description
                     };
+                    
+                    // Ensure description is not undefined or empty
+                    if (!item.description || item.description === 'undefined' || item.description === '') {
+                        item.description = 'Beautiful handmade artwork crafted with passion and attention to detail.';
+                    }
                     
                     // Only include items with valid image paths
                     if (item.image) {
