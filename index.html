@@ -50,7 +50,22 @@
                 </div>
             </div>
             <div class="hero-image">
-                <img src="artwork/banner.png" alt="Shatarupa's Artree Banner" class="banner-img" onload="console.log('Custom banner loaded successfully')" onerror="console.log('Custom banner failed, trying fallback'); this.src='artwork/Paintings/Abstract_eye.jpg';">
+                <div class="banner-carousel">
+                    <div class="carousel-slide active">
+                        <img src="artwork/banner.png" alt="Shatarupa's Artree Banner" class="banner-img" onload="console.log('Banner 1 loaded successfully')">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="artwork/banner1.png" alt="Shatarupa's Artree Banner 2" class="banner-img" onload="console.log('Banner 2 loaded successfully')">
+                    </div>
+                    <div class="carousel-controls">
+                        <button class="carousel-btn prev-btn" onclick="changeSlide(-1)">‹</button>
+                        <button class="carousel-btn next-btn" onclick="changeSlide(1)">›</button>
+                    </div>
+                    <div class="carousel-indicators">
+                        <span class="indicator active" onclick="goToSlide(0)"></span>
+                        <span class="indicator" onclick="goToSlide(1)"></span>
+                    </div>
+                </div>
                 <div class="floating-elements">
                     <div class="paint-splash splash-1"></div>
                     <div class="paint-splash splash-2"></div>
@@ -464,6 +479,83 @@
         </div>
     </section>
     
+    <!-- Carousel JavaScript -->
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const indicators = document.querySelectorAll('.indicator');
+        let autoSlideInterval;
+
+        function showSlide(index) {
+            // Hide all slides
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            // Remove active class from all indicators
+            indicators.forEach(indicator => {
+                indicator.classList.remove('active');
+            });
+            
+            // Show current slide
+            slides[index].classList.add('active');
+            indicators[index].classList.add('active');
+            currentSlide = index;
+        }
+
+        function changeSlide(direction) {
+            currentSlide += direction;
+            
+            if (currentSlide >= slides.length) {
+                currentSlide = 0;
+            } else if (currentSlide < 0) {
+                currentSlide = slides.length - 1;
+            }
+            
+            showSlide(currentSlide);
+            resetAutoSlide();
+        }
+
+        function goToSlide(index) {
+            showSlide(index);
+            resetAutoSlide();
+        }
+
+        function autoSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(autoSlide, 4000); // Change slide every 4 seconds
+        }
+
+        function resetAutoSlide() {
+            clearInterval(autoSlideInterval);
+            startAutoSlide();
+        }
+
+        // Initialize carousel
+        document.addEventListener('DOMContentLoaded', function() {
+            if (slides.length > 0) {
+                showSlide(0);
+                startAutoSlide();
+            }
+        });
+
+        // Pause auto-slide on hover
+        const carousel = document.querySelector('.banner-carousel');
+        if (carousel) {
+            carousel.addEventListener('mouseenter', () => {
+                clearInterval(autoSlideInterval);
+            });
+            
+            carousel.addEventListener('mouseleave', () => {
+                startAutoSlide();
+            });
+        }
+    </script>
+
     <!-- Collections Auto-Loader Script -->
     <script>
     // Auto-load collections from artwork folder

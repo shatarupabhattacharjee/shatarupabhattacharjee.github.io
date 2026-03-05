@@ -183,18 +183,97 @@ body {
     text-align: left;
 }
 
-.banner-img {
+.banner-carousel {
+    position: relative;
     width: 100%;
     max-width: 500px;
     height: auto;
+    overflow: hidden;
     border-radius: 20px;
     box-shadow: 0 20px 60px rgba(45, 27, 20, 0.15);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    object-fit: contain;
+}
+
+.carousel-slide {
+    display: none;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.carousel-slide.active {
     display: block;
+    opacity: 1;
+}
+
+.carousel-slide .banner-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 20px;
+    object-fit: contain;
     background: white;
     padding: 5px;
     border: 2px solid rgba(45, 27, 20, 0.1);
+}
+
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    pointer-events: none;
+}
+
+.carousel-btn {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    pointer-events: all;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-btn:hover {
+    background: var(--primary-coral);
+    color: white;
+    transform: scale(1.1);
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+.indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background: var(--primary-coral);
+    transform: scale(1.2);
+}
+
+.indicator:hover {
+    background: rgba(255, 255, 255, 0.8);
 }
 
 .banner-img:hover {
@@ -1510,10 +1589,28 @@ body {
         font-size: 0.9rem;
     }
     
-    .banner-img {
+    .banner-carousel {
         max-width: 320px;
-        border-radius: 15px;
-        padding: 3px;
+    }
+    
+    .carousel-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+    
+    .carousel-controls {
+        padding: 0 5px;
+    }
+    
+    .indicator {
+        width: 8px;
+        height: 8px;
+    }
+    
+    .carousel-indicators {
+        bottom: 10px;
+        gap: 6px;
     }
     
     .floating-elements {
