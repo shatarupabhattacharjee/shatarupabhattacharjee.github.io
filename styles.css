@@ -165,8 +165,9 @@ body {
     padding: 0 20px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    gap: 3rem;
     align-items: center;
+    min-height: 500px;
 }
 
 .hero-image {
@@ -174,11 +175,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    order: 2;
+}
+
+.hero-text {
+    order: 1;
 }
 
 .banner-img {
     width: 100%;
-    max-width: 500px;
+    max-width: 450px;
     height: auto;
     border-radius: 20px;
     box-shadow: 0 20px 60px rgba(45, 27, 20, 0.15);
@@ -270,8 +276,16 @@ body {
 
 .hero-buttons {
     display: flex;
-    gap: 1.5rem;
+    gap: 1rem;
     flex-wrap: wrap;
+    align-items: center;
+}
+
+.hero-buttons .btn {
+    padding: 12px 25px;
+    font-size: 0.95rem;
+    min-width: 140px;
+    justify-content: center;
 }
 
 .btn {
@@ -1471,6 +1485,14 @@ body {
         text-align: center;
     }
     
+    .hero-text {
+        order: 1;
+    }
+    
+    .hero-image {
+        order: 2;
+    }
+    
     .hero-title {
         font-size: 2.5rem;
     }
@@ -1483,8 +1505,19 @@ body {
         font-size: 1rem;
     }
     
+    .hero-buttons {
+        justify-content: center;
+        gap: 0.8rem;
+    }
+    
+    .hero-buttons .btn {
+        min-width: 120px;
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
     .banner-img {
-        max-width: 300px;
+        max-width: 280px;
         border-radius: 15px;
     }
     
