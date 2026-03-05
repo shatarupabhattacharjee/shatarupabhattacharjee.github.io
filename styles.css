@@ -185,7 +185,7 @@ body {
 
 .banner-img {
     width: 100%;
-    max-width: 450px;
+    max-width: 500px;
     height: auto;
     border-radius: 20px;
     box-shadow: 0 20px 60px rgba(45, 27, 20, 0.15);
@@ -193,7 +193,8 @@ body {
     object-fit: contain;
     display: block;
     background: white;
-    padding: 10px;
+    padding: 5px;
+    border: 2px solid rgba(45, 27, 20, 0.1);
 }
 
 .banner-img:hover {
@@ -1510,8 +1511,9 @@ body {
     }
     
     .banner-img {
-        max-width: 280px;
+        max-width: 320px;
         border-radius: 15px;
+        padding: 3px;
     }
     
     .floating-elements {
