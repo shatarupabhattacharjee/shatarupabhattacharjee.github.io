@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Test Page</title>
+    <meta charset="UTF-8">
+    <title>GitHub Pages Test - FINAL</title>
 </head>
 <body>
-    <h1>GitHub Pages Test</h1>
+    <h1>GitHub Pages Test Page</h1>
     <p>If you can see this, GitHub Pages is working.</p>
     <p>Current time: <span id="time"></span></p>
+    <p>Test deployed at: <span id="deployTime"></span></p>
     <script>
         document.getElementById('time').textContent = new Date().toLocaleString();
+        document.getElementById('deployTime').textContent = new Date().toLocaleString();
     </script>
 </body>
 </html>
