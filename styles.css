@@ -160,14 +160,14 @@ body {
 }
 
 .hero-content {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 20px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 2rem;
     align-items: center;
-    min-height: 500px;
+    min-height: 600px;
 }
 
 .hero-image {
@@ -186,7 +186,7 @@ body {
 .banner-carousel {
     position: relative;
     width: 100%;
-    max-width: 600px;
+    max-width: 800px;
     height: auto;
     overflow: hidden;
     border-radius: 20px;
@@ -213,9 +213,9 @@ body {
     border-radius: 20px;
     object-fit: contain;
     background: white;
-    padding: 3px;
+    padding: 2px;
     border: 2px solid rgba(45, 27, 20, 0.1);
-    min-height: 350px;
+    min-height: 450px;
 }
 
 .carousel-controls {
@@ -1592,31 +1592,31 @@ body {
     }
     
     .banner-carousel {
-        max-width: 350px;
+        max-width: 400px;
     }
     
     .carousel-btn {
-        width: 35px;
-        height: 35px;
-        font-size: 16px;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
     }
     
     .carousel-controls {
-        padding: 0 5px;
+        padding: 0 10px;
     }
     
     .indicator {
-        width: 8px;
-        height: 8px;
+        width: 10px;
+        height: 10px;
     }
     
     .carousel-indicators {
-        bottom: 10px;
-        gap: 6px;
+        bottom: 15px;
+        gap: 8px;
     }
     
     .carousel-slide .banner-img {
-        min-height: 250px;
+        min-height: 300px;
     }
     
     .floating-elements {
