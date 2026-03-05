@@ -538,10 +538,16 @@
                 subtitle: 'Preserve your memories in beautiful resin art',
                 thumbnail: '',
                 items: []
+            },
+            'Videos': {
+                title: 'Videos',
+                subtitle: 'Watch the creative process and techniques',
+                thumbnail: '',
+                items: []
             }
         };
 
-        // Categorize items based on folder or category
+        // Categorize items based on folder or category field
         collectionData.forEach(item => {
             let category = null;
             
@@ -553,6 +559,8 @@
                     category = categories['Handmade Crochet Purse'];
                 } else if (item.image.includes('Resin') || item.category?.includes('RESIN')) {
                     category = categories['Memories with Resin'];
+                } else if (item.image.includes('Videos') || item.category?.includes('VIDEO')) {
+                    category = categories['Videos'];
                 }
             }
 
@@ -565,8 +573,8 @@
             }
         });
 
-        // Return only categories with items
-        return Object.values(categories).filter(cat => cat.items.length > 0);
+        // Return only categories with items, but include Videos even if empty to show the section
+        return Object.values(categories).filter(cat => cat.items.length > 0 || cat.title === 'Videos');
     }
 
     // Function to create a category card
@@ -780,70 +788,53 @@
         }
     }
 
-    // Fallback function for local collection data
+    // Fallback function for local collection data (matches Google Sheet data)
     function getLocalCollectionData() {
-        // Define the folder structure and their properties
-        const folderConfig = {
-            'Crochet': {
-                category: 'HANDMADE CROCHET',
-                priceRange: [1500, 3500],
-                status: 'available',
-                buttonText: 'View Artwork',
-                buttonClass: 'btn-primary'
-            },
-            'Paintings': {
-                category: 'HANDMADE PAINTING',
-                priceRange: [3000, 8000],
-                status: 'available',
-                buttonText: 'View Masterpiece',
-                buttonClass: 'btn-primary'
-            },
-            'Resin': {
-                category: 'RESIN ART',
-                priceRange: [2000, 6000],
-                status: 'curing',
-                buttonText: 'Track Memory',
-                buttonClass: 'btn-secondary'
-            }
-        };
-
-        // Known images in each folder
-        const folderImages = {
-            'Crochet': ['20260305_094919.jpg'],
-            'Paintings': [
-                '20240629_093753.jpg', '20250325_194214.jpg', '20250325_194253.jpg',
-                'Abstract_eye.jpg', 'Birds.jpg', 'Car1.jpg', 'Car2.jpg', 'Durga.jpg',
-                'Eye.jpg', 'Floral3.jpg', 'Landscape2.jpg', 'Landscape4.jpg',
-                'Landscape_Snow.jpg', 'Portrait1.jpg', 'Shiva.jpg', 'Still1.jpg', 'Tiger.jpg'
-            ],
-            'Resin': []
-        };
-
-        // Generate collection items dynamically
-        const collectionData = [];
-        
-        Object.keys(folderConfig).forEach(folder => {
-            const config = folderConfig[folder];
-            const images = folderImages[folder] || [];
+        return [
+            // Paintings - Available
+            { image: 'artwork/Paintings/20240629_093753.jpg', name: 'Nature-inspired Landscape', category: 'HANDMADE PAINTING', price: '₹5000', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Beautiful nature-inspired landscape painting with vibrant colors and serene atmosphere' },
+            { image: 'artwork/Paintings/20250325_194214.jpg', name: 'Surreal Composition', category: 'HANDMADE PAINTING', price: '₹5500', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Surreal artwork that blends reality with imagination in unique composition' },
+            { image: 'artwork/Paintings/20250325_194253.jpg', name: 'Traditional Art Form', category: 'HANDMADE PAINTING', price: '₹4500', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Traditional art form showcasing cultural heritage and artistic techniques' },
+            { image: 'artwork/Paintings/Abstract_eye.jpg', name: 'Abstract Eye', category: 'HANDMADE PAINTING', price: '₹6000', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Mesmerizing abstract eye painting with deep symbolism and artistic expression' },
+            { image: 'artwork/Paintings/Birds.jpg', name: 'Birds', category: 'HANDMADE PAINTING', price: '₹4000', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Beautiful birds in flight capturing freedom and natural beauty' },
+            { image: 'artwork/Paintings/Car1.jpg', name: 'Classic Car', category: 'HANDMADE PAINTING', price: '₹5000', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Classic car painting with attention to detail and vintage charm' },
+            { image: 'artwork/Paintings/Car2.jpg', name: 'Sports Car', category: 'HANDMADE PAINTING', price: '₹5500', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Dynamic sports car painting showcasing speed and modern design' },
+            { image: 'artwork/Paintings/Durga.jpg', name: 'Goddess Durga', category: 'HANDMADE PAINTING', price: '₹7000', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Divine goddess Durga painting representing power and feminine strength' },
+            { image: 'artwork/Paintings/Eye.jpg', name: 'Realistic Eye', category: 'HANDMADE PAINTING', price: '₹4500', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Hyper-realistic eye painting with incredible detail and depth' },
+            { image: 'artwork/Paintings/Floral1.heic', name: 'Floral Beauty', category: 'HANDMADE PAINTING', price: '₹4000', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Delicate floral composition celebrating natural beauty and elegance' },
+            { image: 'artwork/Paintings/Floral3.jpg', name: 'Garden Florals', category: 'HANDMADE PAINTING', price: '₹3500', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Vibrant garden floral arrangement with fresh spring colors' },
+            { image: 'artwork/Paintings/Landscape2.jpg', name: 'Serene Landscape', category: 'HANDMADE PAINTING', price: '₹4500', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Peaceful landscape painting capturing nature\'s tranquility' },
+            { image: 'artwork/Paintings/Landscape4.jpg', name: 'Mountain Vista', category: 'HANDMADE PAINTING', price: '₹5000', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Majestic mountain landscape with dramatic lighting and depth' },
+            { image: 'artwork/Paintings/Landscape_Snow.jpg', name: 'Winter Wonderland', category: 'HANDMADE PAINTING', price: '₹4000', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Serene snow-covered landscape with peaceful winter atmosphere' },
+            { image: 'artwork/Paintings/Landscape_forest_hut.jpg', name: 'Forest Retreat', category: 'HANDMADE PAINTING', price: '₹3500', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Charming forest hut scene surrounded by lush greenery' },
+            { image: 'artwork/Paintings/Portrait1.jpg', name: 'Elegant Portrait', category: 'HANDMADE PAINTING', price: '₹6000', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Sophisticated portrait painting capturing personality and emotion' },
+            { image: 'artwork/Paintings/Shiva.jpg', name: 'Lord Shiva', category: 'HANDMADE PAINTING', price: '₹8000', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Divine Lord Shiva painting with intricate details and spiritual energy' },
+            { image: 'artwork/Paintings/Still1.jpg', name: 'Still Life', category: 'HANDMADE PAINTING', price: '₹3000', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Classic still life composition with artistic arrangement' },
+            { image: 'artwork/Paintings/Still2.jpg', name: 'Modern Still', category: 'HANDMADE PAINTING', price: '₹3500', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Contemporary still life with modern artistic elements' },
+            { image: 'artwork/Paintings/Tiger.jpg', name: 'Majestic Tiger', category: 'HANDMADE PAINTING', price: '₹6500', status: 'available', buttonText: 'View Masterpiece', buttonClass: 'btn-primary', description: 'Powerful tiger painting showcasing wildlife strength and beauty' },
             
-            // Add items for each image
-            images.forEach(imageName => {
-                const name = imageName.replace(/\.[^/.]+$/, "").replace(/_/g, ' ');
-                const price = `₹${Math.floor(Math.random() * (config.priceRange[1] - config.priceRange[0]) + config.priceRange[0])}`;
-                
-                collectionData.push({
-                    image: `artwork/${folder}/${imageName}`,
-                    name: name.charAt(0).toUpperCase() + name.slice(1),
-                    category: config.category,
-                    price: price,
-                    status: config.status,
-                    buttonText: config.buttonText,
-                    buttonClass: config.buttonClass
-                });
-            });
-        });
-
-        return collectionData;
+            // Crochet Purses - Available
+            { image: 'artwork/Crochet/20260305_094919.jpg', name: 'Stylish Crochet Purse', category: 'HANDMADE CROCHET', price: '₹2500', status: 'available', buttonText: 'View Artwork', buttonClass: 'btn-primary', description: 'Elegant crochet purse handcrafted with premium yarn and attention to detail' },
+            
+            // Videos - Available
+            { image: 'artwork/Short Painting Videos/20240213_042741.mp4', name: 'Art Creation Process', category: 'VIDEO', price: '₹0', status: 'available', buttonText: 'Watch Video', buttonClass: 'btn-secondary', description: 'Watch the creative process behind this beautiful artwork' },
+            { image: 'artwork/Short Painting Videos/20240224_003701.mp4', name: 'Painting Technique', category: 'VIDEO', price: '₹0', status: 'available', buttonText: 'Watch Video', buttonClass: 'btn-secondary', description: 'Learn painting techniques and artistic methods' },
+            { image: 'artwork/Short Painting Videos/20240303_213110.mp4', name: 'Art Studio Tour', category: 'VIDEO', price: '₹0', status: 'available', buttonText: 'Watch Video', buttonClass: 'btn-secondary', description: 'Take a virtual tour of the art studio and workspace' },
+            { image: 'artwork/Short Painting Videos/20240515_184853.mp4', name: 'Final Artwork', category: 'VIDEO', price: '₹0', status: 'available', buttonText: 'Watch Video', buttonClass: 'btn-secondary', description: 'See the final touches and completion of artwork' },
+            
+            // Sold Out Items
+            { image: 'artwork/Sold Out/20250418_190842.jpg', name: 'Sold Landscape', category: 'HANDMADE PAINTING', price: 'SOLD', status: 'sold-out', buttonText: 'Sold Out', buttonClass: 'btn-secondary', description: 'Beautiful landscape painting - already sold to a happy customer' },
+            { image: 'artwork/Sold Out/20250418_230758.jpg', name: 'Sold Abstract', category: 'HANDMADE PAINTING', price: 'SOLD', status: 'sold-out', buttonText: 'Sold Out', buttonClass: 'btn-secondary', description: 'Abstract artwork - already sold to a happy customer' },
+            { image: 'artwork/Sold Out/20250419_153036.jpg', name: 'Sold Portrait', category: 'HANDMADE PAINTING', price: 'SOLD', status: 'sold-out', buttonText: 'Sold Out', buttonClass: 'btn-secondary', description: 'Portrait painting - already sold to a happy customer' },
+            { image: 'artwork/Sold Out/20250419_194858.jpg', name: 'Sold Nature', category: 'HANDMADE PAINTING', price: 'SOLD', status: 'sold-out', buttonText: 'Sold Out', buttonClass: 'btn-secondary', description: 'Nature painting - already sold to a happy customer' },
+            { image: 'artwork/Sold Out/Abstract_eye.jpg', name: 'Sold Abstract Eye', category: 'HANDMADE PAINTING', price: 'SOLD', status: 'sold-out', buttonText: 'Sold Out', buttonClass: 'btn-secondary', description: 'Abstract eye painting - already sold to a happy customer' },
+            { image: 'artwork/Sold Out/Elephant.jpg', name: 'Sold Elephant', category: 'HANDMADE PAINTING', price: 'SOLD', status: 'sold-out', buttonText: 'Sold Out', buttonClass: 'btn-secondary', description: 'Elephant painting - already sold to a happy customer' },
+            { image: 'artwork/Sold Out/Floral2.jpg', name: 'Sold Floral', category: 'HANDMADE PAINTING', price: 'SOLD', status: 'sold-out', buttonText: 'Sold Out', buttonClass: 'btn-secondary', description: 'Floral painting - already sold to a happy customer' },
+            { image: 'artwork/Sold Out/Floral4.jpg', name: 'Sold Garden', category: 'HANDMADE PAINTING', price: 'SOLD', status: 'sold-out', buttonText: 'Sold Out', buttonClass: 'btn-secondary', description: 'Garden painting - already sold to a happy customer' },
+            { image: 'artwork/Sold Out/Floral5.jpg', name: 'Sold Spring', category: 'HANDMADE PAINTING', price: 'SOLD', status: 'sold-out', buttonText: 'Sold Out', buttonClass: 'btn-secondary', description: 'Spring painting - already sold to a happy customer' },
+            { image: 'artwork/Sold Out/Landscape3.jpg', name: 'Sold Vista', category: 'HANDMADE PAINTING', price: 'SOLD', status: 'sold-out', buttonText: 'Sold Out', buttonClass: 'btn-secondary', description: 'Landscape painting - already sold to a happy customer' },
+            { image: 'artwork/Sold Out/Sarika_Mata.jpg', name: 'Sold Goddess', category: 'HANDMADE PAINTING', price: 'SOLD', status: 'sold-out', buttonText: 'Sold Out', buttonClass: 'btn-secondary', description: 'Goddess painting - already sold to a happy customer' }
+        ];
     }
 
     function createCollectionCard(item, index) {
