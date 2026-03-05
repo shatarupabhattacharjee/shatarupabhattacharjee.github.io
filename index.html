@@ -477,6 +477,7 @@
             let collectionData = await loadFromGoogleSheets();
             
             if (!collectionData || collectionData.length === 0) {
+                console.log('Google Sheets failed, using local data');
                 // Fallback to local folder configuration
                 collectionData = getLocalCollectionData();
             }
@@ -511,7 +512,7 @@
             categoriesGrid.innerHTML = `
                 <div class="error-message">
                     <i class="fas fa-exclamation-triangle"></i>
-                    <p>Unable to load collection. Please try again later.</p>
+                    <p>Error loading collections. Please try refreshing the page.</p>
                 </div>
             `;
         }
