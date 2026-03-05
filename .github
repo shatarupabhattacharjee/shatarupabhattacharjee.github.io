@@ -6,4 +6,3 @@ url: "https://shatarupabhattacharjee.github.io"
 source: main
 plugins:
   - jekyll-feed
-# Force GitHub Pages to use main branch
