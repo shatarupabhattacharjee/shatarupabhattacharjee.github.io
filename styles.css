@@ -184,6 +184,9 @@ body {
     box-shadow: 0 20px 60px rgba(45, 27, 20, 0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     object-fit: contain;
+    display: block;
+    background: white;
+    padding: 10px;
 }
 
 .banner-img:hover {
