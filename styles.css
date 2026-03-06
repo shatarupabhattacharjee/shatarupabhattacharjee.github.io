@@ -2972,7 +2972,7 @@ body {
 
 @media (max-width: 768px) {
     .hamburger {
-        display: flex;
+        display: flex !important;
         position: fixed;
         top: 20px;
         right: 20px;
@@ -2981,6 +2981,10 @@ body {
         border-radius: 8px;
         border: 2px solid var(--primary-coral);
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        padding: 15px;
+        cursor: pointer;
+        pointer-events: auto;
+        touch-action: manipulation;
     }
 
 .nav-menu {
