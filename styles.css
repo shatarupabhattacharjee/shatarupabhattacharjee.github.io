@@ -2974,8 +2974,8 @@ body {
     .hamburger {
         display: flex;
         position: fixed;
-        top: 20px;
-        right: 20px;
+        top: 80px;
+        right: 15px;
         z-index: 1002;
         background: rgba(255, 255, 255, 0.9);
         border-radius: 8px;
@@ -2994,7 +2994,7 @@ body {
         display: flex;
         flex-direction: column;
         position: fixed;
-        top: 80px;
+        top: 130px;
         left: 0;
         width: 100%;
         background: rgba(247, 243, 233, 0.98);
@@ -3003,7 +3003,7 @@ body {
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         z-index: 1000;
         gap: 1.5rem;
-        max-height: calc(100vh - 100px);
+        max-height: calc(100vh - 150px);
         overflow-y: auto;
         visibility: visible;
     }
