@@ -34,34 +34,29 @@
 
     
 
-    /* Typography */
+    /* Font Variables */
 
-    --font-primary: 'Poppins', sans-serif;
+    --primary-font: 'Roboto', sans-serif;
+
+    --secondary-font: 'Poppins', sans-serif;
 
     --font-weight-light: 300;
 
     --font-weight-regular: 400;
 
+    --font-weight-medium: 500;
+
     --font-weight-semibold: 600;
 
     --font-weight-bold: 700;
 
-}
-
-
 
 body {
-
-    font-family: var(--font-primary);
-
+    font-family: var(--primary-font);
     line-height: 1.6;
-
     color: var(--dark-brown);
-
     background-color: var(--light-cream);
-
     overflow-x: hidden;
-
 }
 
 
@@ -164,6 +159,8 @@ body {
 
 .brand-text h1 {
 
+    font-family: var(--secondary-font);
+
     font-size: 1.8rem;
 
     font-weight: var(--font-weight-bold);
@@ -185,6 +182,8 @@ body {
 
 
 .tagline {
+
+    font-family: var(--secondary-font);
 
     font-size: 0.9rem;
 
@@ -213,8 +212,9 @@ body {
 }
 
 
-
 .nav-link {
+
+    font-family: var(--primary-font);
 
     text-decoration: none;
 
@@ -225,9 +225,7 @@ body {
     transition: all 0.3s ease;
 
     position: relative;
-
 }
-
 
 
 .nav-link:hover {
