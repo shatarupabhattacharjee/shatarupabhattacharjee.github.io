@@ -1,12 +1,47 @@
+// Carousel functionality for 5-banner rotation
+let currentSlide = 0;
+const slides = document.querySelectorAll('.carousel-slide');
+const indicators = document.querySelectorAll('.indicator');
+
+function showSlide(index) {
+    slides.forEach(slide => slide.style.display = 'none');
+    indicators.forEach(indicator => indicator.classList.remove('active'));
+    
+    slides[index].style.display = 'block';
+    indicators[index].classList.add('active');
+    currentSlide = index;
+}
+
+function changeSlide(direction) {
+    currentSlide += direction;
+    if (currentSlide >= slides.length) currentSlide = 0;
+    if (currentSlide < 0) currentSlide = slides.length - 1;
+    showSlide(currentSlide);
+}
+
+function goToSlide(index) {
+    currentSlide = index;
+    showSlide(currentSlide);
+}
+
+// Auto-rotate every 4 seconds
+setInterval(() => changeSlide(1), 4000);
+
+// Initialize
+showSlide(0);
+
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+            const headerOffset = 80; // Account for fixed header
+            const targetPosition = target.offsetTop - headerOffset;
+            
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
             });
         }
     });
