@@ -68,26 +68,55 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('Hamburger element:', hamburger);
     console.log('Nav menu element:', navMenu);
 
-    if (hamburger && navMenu) {
-        console.log('Both elements found, adding click listener');
+    // Try multiple approaches to catch the click
+    if (hamburger) {
+        console.log('Hamburger found, adding multiple event listeners');
+        
+        // Direct click event
         hamburger.addEventListener('click', function(e) {
-            console.log('Hamburger clicked!');
+            console.log('Direct click triggered!');
             e.preventDefault();
+            e.stopPropagation();
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
             console.log('Classes toggled - hamburger.active:', hamburger.classList.contains('active'));
             console.log('Classes toggled - navMenu.active:', navMenu.classList.contains('active'));
         });
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
-            console.log('Nav link clicked, closing menu');
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-        }));
-    } else {
-        console.error('Mobile menu elements not found!');
+        
+        // Touch event for mobile
+        hamburger.addEventListener('touchstart', function(e) {
+            console.log('Touch start triggered!');
+            e.preventDefault();
+        });
+        
+        hamburger.addEventListener('touchend', function(e) {
+            console.log('Touch end triggered!');
+            e.preventDefault();
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            console.log('Classes toggled via touch - hamburger.active:', hamburger.classList.contains('active'));
+            console.log('Classes toggled via touch - navMenu.active:', navMenu.classList.contains('active'));
+        });
     }
+
+    // Fallback: Check clicks anywhere on document
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('.hamburger')) {
+            console.log('Document click detected on hamburger!');
+            e.preventDefault();
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            console.log('Classes toggled via document - hamburger.active:', hamburger.classList.contains('active'));
+            console.log('Classes toggled via document - navMenu.active:', navMenu.classList.contains('active'));
+        }
+    });
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+        console.log('Nav link clicked, closing menu');
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    }));
 });
 
 // Gallery filter functionality
