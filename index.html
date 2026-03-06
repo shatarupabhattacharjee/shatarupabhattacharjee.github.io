@@ -126,7 +126,7 @@
 
                 </div>
 
-                <ul class="nav-menu" style="display: flex !important;">
+                <ul class="nav-menu">
 
                     <li><a href="#home" class="nav-link">Home</a></li>
 
@@ -140,7 +140,7 @@
 
                 </ul>
 
-                <div class="hamburger" onclick="alert('Hamburger clicked!'); console.log('Inline click worked');" style="background: red !important; border: 3px solid yellow !important;">
+                <div class="hamburger" onclick="toggleMobileMenu();">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -2486,7 +2486,17 @@
 
     <script src="script.js"></script>
 
+<script>
+        function toggleMobileMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            if (hamburger && navMenu) {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                console.log('Menu toggled');
+            }
+        }
+    </script>
 </body>
-
 </html>
-
