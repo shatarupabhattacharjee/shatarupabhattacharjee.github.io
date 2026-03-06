@@ -2936,30 +2936,25 @@ body {
 
         display: flex;
 
-    }
+}
 
-    
-
-    .nav-menu {
-
+.nav-menu {
         display: none;
-
     }
-
     
-
-    .hero-content {
-
+    .nav-menu.active {
+        display: flex;
         flex-direction: column;
-
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(247, 243, 233, 0.98);
+        backdrop-filter: blur(10px);
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
         gap: 1.5rem;
-
-        text-align: center;
-
-        min-height: auto;
-
-        padding: 2rem 1rem;
-
     }
 
     
