@@ -2988,11 +2988,11 @@ body {
     }
 
 .nav-menu {
-        display: none;
+        display: none !important;
     }
     
     .nav-menu.active {
-        display: flex;
+        display: flex !important;
         flex-direction: column;
         position: fixed;
         top: 80px;
@@ -3006,6 +3006,7 @@ body {
         gap: 1.5rem;
         max-height: calc(100vh - 100px);
         overflow-y: auto;
+        visibility: visible;
     }
 
     
