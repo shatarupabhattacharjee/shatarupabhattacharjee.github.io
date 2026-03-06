@@ -61,20 +61,32 @@ window.addEventListener('scroll', () => {
 
 // Mobile menu toggle
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded, setting up mobile menu');
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
 
+    console.log('Hamburger element:', hamburger);
+    console.log('Nav menu element:', navMenu);
+
     if (hamburger && navMenu) {
-        hamburger.addEventListener('click', () => {
+        console.log('Both elements found, adding click listener');
+        hamburger.addEventListener('click', function(e) {
+            console.log('Hamburger clicked!');
+            e.preventDefault();
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
+            console.log('Classes toggled - hamburger.active:', hamburger.classList.contains('active'));
+            console.log('Classes toggled - navMenu.active:', navMenu.classList.contains('active'));
         });
 
         // Close mobile menu when clicking on a link
         document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+            console.log('Nav link clicked, closing menu');
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
         }));
+    } else {
+        console.error('Mobile menu elements not found!');
     }
 });
 
