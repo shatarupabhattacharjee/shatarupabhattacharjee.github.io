@@ -59,64 +59,77 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Mobile menu toggle
+// Mobile menu toggle - Android S23 Ultra specific
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loaded, setting up mobile menu');
+    console.log('DOM loaded, setting up mobile menu for Android');
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
 
     console.log('Hamburger element:', hamburger);
     console.log('Nav menu element:', navMenu);
 
-    // Try multiple approaches to catch the click
     if (hamburger) {
-        console.log('Hamburger found, adding multiple event listeners');
+        console.log('Hamburger found, adding Android-specific handlers');
         
-        // Direct click event
-        hamburger.addEventListener('click', function(e) {
-            console.log('Direct click triggered!');
+        // Android touch handling - multiple approaches
+        hamburger.addEventListener('touchstart', function(e) {
+            console.log('Touch start on Android!');
             e.preventDefault();
             e.stopPropagation();
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-            console.log('Classes toggled - hamburger.active:', hamburger.classList.contains('active'));
-            console.log('Classes toggled - navMenu.active:', navMenu.classList.contains('active'));
-        });
-        
-        // Touch event for mobile
-        hamburger.addEventListener('touchstart', function(e) {
-            console.log('Touch start triggered!');
-            e.preventDefault();
-        });
+        }, { passive: false });
         
         hamburger.addEventListener('touchend', function(e) {
-            console.log('Touch end triggered!');
+            console.log('Touch end on Android!');
             e.preventDefault();
+            e.stopPropagation();
+            
+            // Toggle menu
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
-            console.log('Classes toggled via touch - hamburger.active:', hamburger.classList.contains('active'));
-            console.log('Classes toggled via touch - navMenu.active:', navMenu.classList.contains('active'));
+            console.log('Menu toggled - hamburger.active:', hamburger.classList.contains('active'));
+            console.log('Menu toggled - navMenu.active:', navMenu.classList.contains('active'));
+        }, { passive: false });
+        
+        // Click event as backup
+        hamburger.addEventListener('click', function(e) {
+            console.log('Click event on Android backup!');
+            e.preventDefault();
+            e.stopPropagation();
+            
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            console.log('Menu toggled via click - hamburger.active:', hamburger.classList.contains('active'));
+            console.log('Menu toggled via click - navMenu.active:', navMenu.classList.contains('active'));
         });
+        
+        // Make hamburger more visible for testing
+        hamburger.style.backgroundColor = 'rgba(255, 0, 0, 0.3)';
+        hamburger.style.border = '2px solid red';
+        
+        // Test click immediately
+        setTimeout(() => {
+            console.log('Testing hamburger click programmatically');
+            hamburger.click();
+        }, 1000);
     }
 
-    // Fallback: Check clicks anywhere on document
-    document.addEventListener('click', function(e) {
-        if (e.target.closest('.hamburger')) {
-            console.log('Document click detected on hamburger!');
-            e.preventDefault();
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-            console.log('Classes toggled via document - hamburger.active:', hamburger.classList.contains('active'));
-            console.log('Classes toggled via document - navMenu.active:', navMenu.classList.contains('active'));
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', function(e) {
+        console.log('Nav link clicked, closing menu');
+        if (hamburger && navMenu) {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }
+    }));
+    
+    // Close menu when clicking outside
+    document.addEventListener('touchstart', function(e) {
+        if (hamburger && navMenu && navMenu.classList.contains('active') && !e.target.closest('.hamburger') && !e.target.closest('.nav-menu')) {
+            console.log('Touched outside menu, closing');
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
         }
     });
-
-    // Close mobile menu when clicking on a link
-    document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
-        console.log('Nav link clicked, closing menu');
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
-    }));
 });
 
 // Gallery filter functionality
