@@ -1,0 +1,8 @@
+theme: jekyll-theme-minimal
+title: Shatarupa's Artree
+description: Beautiful handmade paintings, crochet purses, and resin art
+baseurl: ""
+url: "https://shatarupabhattacharjee.github.io"
+source: main
+plugins:
+  - jekyll-feed

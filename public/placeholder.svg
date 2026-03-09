@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="512" height="512" fill="#f0f0f0"/>
+    <rect x="32" y="32" width="448" height="448" rx="8" fill="#e0e0e0" stroke="#ccc" stroke-width="2" stroke-dasharray="4 4"/>
+    <path d="M128 216C128 168.72 166.72 130 214 130C261.28 130 300 168.72 300 216C300 263.28 261.28 302 214 302C166.72 302 128 263.28 128 216Z" fill="#bdbdbd"/>
+    <path d="M400 400L320 320L240 400" stroke="#bdbdbd" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M400 400H112V112H400V400Z" stroke="#bdbdbd" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="256" y="450" font-family="Arial" font-size="16" text-anchor="middle" fill="#999">Image Generation Unavailable</text>
+</svg>
